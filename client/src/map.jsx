@@ -12,12 +12,15 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
   const mapRef = useRef(null);
   const mapObj = useRef(null);
   const markersRef = useRef([]);
+  const userMarkerRef = useRef(null); // "You are here" dot (real GPS fix only)
+  const userCircleRef = useRef(null); // GPS accuracy circle
   const [city, setCity] = useState('ALL');
   const [category, setCategory] = useState('ALL');
   const [query, setQuery] = useState('');
   const [neighborhood, setNeighborhood] = useState('ALL');
   const [point, setPoint] = useState(null); // { lat, lng, label }
   const [pointLabel, setPointLabel] = useState('');
+  const [accuracy, setAccuracy] = useState(null); // GPS accuracy in meters
   const [locState, setLocState] = useState('idle'); // idle | locating | ok | fail
   const [locMsg, setLocMsg] = useState('');
   const [tileFailed, setTileFailed] = useState(false);
@@ -87,9 +90,36 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
         const cp = CITY_POINTS[city];
         mapObj.current.setView([cp.lat, cp.lng], 12);
       }
+      // "You are here" dot: only for a real GPS fix, never for a fallback
+      // neighborhood/city reference point.
+      if (userMarkerRef.current) { userMarkerRef.current.remove(); userMarkerRef.current = null; }
+      if (userCircleRef.current) { userCircleRef.current.remove(); userCircleRef.current = null; }
+      if (point && pointLabel === 'GPS') {
+        const dot = L.marker([point.lat, point.lng], {
+          icon: L.divIcon({
+            className: 'gps-dot-wrap',
+            html: '<span class="gps-dot"></span>',
+            iconSize: [18, 18],
+            iconAnchor: [9, 9]
+          }),
+          interactive: false,
+          keyboard: false
+        }).addTo(mapObj.current);
+        userMarkerRef.current = dot;
+        if (accuracy != null && accuracy > 0) {
+          userCircleRef.current = L.circle([point.lat, point.lng], {
+            radius: accuracy,
+            color: '#2f7bff',
+            weight: 1,
+            fillColor: '#2f7bff',
+            fillOpacity: 0.12,
+            interactive: false
+          }).addTo(mapObj.current);
+        }
+      }
     }).catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mapReady, sorted, point, city]);
+  }, [mapReady, sorted, point, city, pointLabel, accuracy]);
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -107,6 +137,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       const pt = { lat: pos.coords.latitude, lng: pos.coords.longitude };
       setPoint(pt);
       setPointLabel('GPS');
+      setAccuracy(pos.coords.accuracy != null ? Math.round(pos.coords.accuracy) : null);
       setLocState('ok');
       setLocMsg('');
       if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], 14);
