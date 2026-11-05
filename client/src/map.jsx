@@ -103,27 +103,33 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
     }
     setLocState('locating');
     setLocMsg('');
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const pt = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        setPoint(pt);
-        setPointLabel('GPS');
-        setLocState('ok');
-        setLocMsg('');
-        if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], 14);
-      },
-      (err) => {
-        // Per-cause guidance, then fall back to the selected reference point.
-        let msg = t('locateFail');
-        if (err.code === 1) msg = t('locateFail') + ' (permission denied)';
-        else if (err.code === 2) msg = t('locateFail') + ' (position unavailable)';
-        else if (err.code === 3) msg = t('locateFail') + ' (timeout)';
-        setLocState('fail');
-        setLocMsg(msg + ' ' + t('locateFallbackNote'));
-        applyFallbackPoint();
-      },
-      { enableHighAccuracy: false, maximumAge: 3600000, timeout: 10000 }
-    );
+    const onOk = (pos) => {
+      const pt = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      setPoint(pt);
+      setPointLabel('GPS');
+      setLocState('ok');
+      setLocMsg('');
+      if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], 14);
+    };
+    const onErr = (err, retried) => {
+      if (err.code === 3 && !retried) {
+        // Timeout on a cold fix (no cached position): retry once with high
+        // accuracy and a longer window before giving up.
+        navigator.geolocation.getCurrentPosition(onOk, (e2) => onErr(e2, true),
+          { enableHighAccuracy: true, maximumAge: 0, timeout: 30000 });
+        return;
+      }
+      // Per-cause guidance, then fall back to the selected reference point.
+      let msg = t('locateFail');
+      if (err.code === 1) msg = t('locateFail') + ' (permission denied)';
+      else if (err.code === 2) msg = t('locateFail') + ' (position unavailable)';
+      else if (err.code === 3) msg = t('locateFail') + ' (timeout)' + ' ' + t('locateTimeoutHint');
+      setLocState('fail');
+      setLocMsg(msg + ' ' + t('locateFallbackNote'));
+      applyFallbackPoint();
+    };
+    navigator.geolocation.getCurrentPosition(onOk, (e) => onErr(e, false),
+      { enableHighAccuracy: false, maximumAge: 3600000, timeout: 30000 });
   }
 
   function applyFallbackPoint() {
