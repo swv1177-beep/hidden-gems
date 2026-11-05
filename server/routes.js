@@ -198,6 +198,85 @@ router.get('/areas', async (req, res) => {
   });
 });
 
+// ---------- 주변 상점 (카카오맵 카테고리 검색, 서버 프록시) ----------
+// 정책: 카카오 검색 결과는 저장하지 않고 요청 때마다 실시간으로만 조회한다.
+// (이름·주소·좌표 DB 저장 금지 — 장소 ID와 place_url만 예외적으로 보관 가능)
+// 키는 서버 환경변수 KAKAO_REST_API_KEY에만 두고 클라이언트에는 노출하지 않는다.
+const NEARBY_CATEGORIES = ['FD6', 'CE7', 'CS2']; // 음식점, 카페, 편의점
+
+async function kakaoCategorySearch(code, lat, lng, radius) {
+  const url = 'https://dapi.kakao.com/v2/local/search/category.json'
+    + `?category_group_code=${code}&x=${encodeURIComponent(lng)}&y=${encodeURIComponent(lat)}`
+    + `&radius=${radius}&sort=distance&size=15&page=1`;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const res = await fetch(url, {
+      headers: { Authorization: `KakaoAK ${process.env.KAKAO_REST_API_KEY}` },
+      signal: ctrl.signal,
+    });
+    if (res.status === 401 || res.status === 403) {
+      const e = new Error('kakao_auth_failed');
+      e.status = 401;
+      throw e;
+    }
+    if (res.status === 429) {
+      const e = new Error('kakao_rate_limited');
+      e.status = 429;
+      throw e;
+    }
+    if (!res.ok) {
+      const e = new Error('kakao_error');
+      e.status = 502;
+      throw e;
+    }
+    return (await res.json()).documents || [];
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+router.get('/nearby', async (req, res) => {
+  const lat = Number(req.query.lat);
+  const lng = Number(req.query.lng);
+  if (!Number.isFinite(lat) || !Number.isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) {
+    return res.status(400).json({ error: 'invalid_location' });
+  }
+  const radius = Math.min(20000, Math.max(100, Number(req.query.radius) || 1000));
+  if (!process.env.KAKAO_REST_API_KEY) {
+    return res.status(503).json({ error: 'kakao_key_missing' });
+  }
+  try {
+    const lists = await Promise.all(
+      NEARBY_CATEGORIES.map((c) => kakaoCategorySearch(c, lat, lng, radius))
+    );
+    const seen = new Set();
+    const shops = [];
+    for (const doc of lists.flat()) {
+      if (!doc.id || seen.has(doc.id)) continue;
+      seen.add(doc.id);
+      shops.push({
+        id: doc.id,
+        name: doc.place_name,
+        category: doc.category_group_name || '',
+        categoryDetail: (doc.category_name || '').split(' > ').pop() || '',
+        address: doc.road_address_name || doc.address_name || '',
+        lat: Number(doc.y),
+        lng: Number(doc.x),
+        distance: doc.distance != null ? Number(doc.distance) : null,
+        placeUrl: doc.place_url || '',
+      });
+    }
+    shops.sort((a, b) => (a.distance ?? 1e9) - (b.distance ?? 1e9));
+    res.json({ shops: shops.slice(0, 20), source: 'kakaomap', radius });
+  } catch (e) {
+    if (e.status === 401) return res.status(502).json({ error: 'kakao_auth_failed' });
+    if (e.status === 429) return res.status(429).json({ error: 'kakao_rate_limited' });
+    if (e.name === 'AbortError') return res.status(504).json({ error: 'kakao_timeout' });
+    res.status(502).json({ error: 'kakao_error' });
+  }
+});
+
 // ---------- 예약/결제 (테스트 모드) ----------
 
 router.post('/bookings', async (req, res) => {

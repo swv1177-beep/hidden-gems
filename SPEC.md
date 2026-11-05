@@ -70,6 +70,9 @@ hidden-gems/
   - products는 catalog.json 필드를 그대로 camelCase로 반환하되 bookingCount는
     취소되지 않은 예약 수로 계산해서 덮어쓴다.
 - GET /api/search?q=&city=&category= → { products } (이름/지역 부분일치, 도시·카테고리 필터)
+- GET /api/nearby?lat=&lng=&radius= (기본 1000m, 최대 20000m) → { shops, source: 'kakaomap', radius }
+  - 서버 프록시로 카카오맵 카테고리 검색(FD6 음식점·CE7 카페·CS2 편의점, 거리순, 최대 20개)을 실시간 호출한다. 결과는 저장하지 않는다(카카오 정책).
+  - 키는 서버 환경변수 KAKAO_REST_API_KEY에만 둔다. 키 없으면 503 { error: 'kakao_key_missing' }, 인증 실패 502 kakao_auth_failed, 쿼터 초과 429 kakao_rate_limited, 타임아웃 504 kakao_timeout.
 
 ### 예약/결제 (전부 테스트 모드)
 - POST /api/bookings { productSlug, quantity, date, nights, email, name }

@@ -22,6 +22,8 @@ export const api = {
   },
   stayAvailability: (productSlug, from, to) =>
     req(`/api/stay/availability?productSlug=${encodeURIComponent(productSlug)}&from=${from || ''}&to=${to || ''}`),
+  nearby: (lat, lng, radius) =>
+    req(`/api/nearby?lat=${encodeURIComponent(lat)}&lng=${encodeURIComponent(lng)}&radius=${radius || 1000}`),
   taxiEstimate: (params) => req('/api/taxi/estimate?' + new URLSearchParams(params).toString()),
   createBooking: (body) => req('/api/bookings', { method: 'POST', body: JSON.stringify(body) }),
   payBooking: (code, cardNumber) =>

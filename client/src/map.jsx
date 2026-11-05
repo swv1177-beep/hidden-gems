@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CITY_POINTS, haversine, sortByDistance } from './utils.js';
+import { api } from './api.js';
 
 // Map tab: Leaflet + OpenStreetMap tiles, with a full list fallback.
 // - All catalog products get a neighborhood-level pin (catalog lat/lng).
@@ -14,6 +15,10 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
   const markersRef = useRef([]);
   const userMarkerRef = useRef(null); // "You are here" dot (real GPS fix only)
   const userCircleRef = useRef(null); // GPS accuracy circle
+  const nearbyMarkersRef = useRef([]); // KakaoMap nearby-shop markers
+  const [nearby, setNearby] = useState([]); // live KakaoMap results (never stored)
+  const [nearbyState, setNearbyState] = useState('idle'); // idle | loading | ok | fail | nokey
+  const [nearbyMsg, setNearbyMsg] = useState('');
   const [city, setCity] = useState('ALL');
   const [category, setCategory] = useState('ALL');
   const [query, setQuery] = useState('');
@@ -117,9 +122,52 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
           }).addTo(mapObj.current);
         }
       }
+      // Nearby shops from KakaoMap (green dots, distinct from pink product pins).
+      nearbyMarkersRef.current.forEach((m) => m.remove());
+      nearbyMarkersRef.current = [];
+      nearby.forEach((s) => {
+        if (s.lat == null || s.lng == null) return;
+        const marker = L.marker([s.lat, s.lng], {
+          icon: L.divIcon({
+            className: 'nearby-pin',
+            html: '<span></span>',
+            iconSize: [14, 14],
+            iconAnchor: [7, 7]
+          })
+        }).addTo(mapObj.current);
+        marker.bindPopup(`<b>${escapeHtml(s.name || '')}</b><br/>${escapeHtml(s.categoryDetail || s.category || '')}${s.distance != null ? ` · ${fmtDist(s.distance)}` : ''}`);
+        nearbyMarkersRef.current.push(marker);
+      });
     }).catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mapReady, sorted, point, city, pointLabel, accuracy]);
+  }, [mapReady, sorted, point, city, pointLabel, accuracy, nearby]);
+
+  function fmtDist(m) {
+    if (m == null) return '';
+    return m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixed(1)}km`;
+  }
+
+  async function loadNearby(pt) {
+    const target = pt || point;
+    if (!target) return;
+    setNearbyState('loading');
+    setNearbyMsg('');
+    try {
+      const data = await api.nearby(target.lat, target.lng, 1000);
+      setNearby(data.shops || []);
+      setNearbyState('ok');
+      if (!data.shops || !data.shops.length) setNearbyMsg(t('nearbyNone'));
+    } catch (e) {
+      setNearby([]);
+      if (e && e.code === 'kakao_key_missing') {
+        setNearbyState('nokey');
+        setNearbyMsg(t('nearbyNeedKey'));
+      } else {
+        setNearbyState('fail');
+        setNearbyMsg(t('nearbyFail'));
+      }
+    }
+  }
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -141,6 +189,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       setLocState('ok');
       setLocMsg('');
       if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], 14);
+      loadNearby(pt);
     };
     const onErr = (err, retried) => {
       if (err.code === 3 && !retried) {
@@ -251,6 +300,40 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       ) : (
         <p className="warn">{t('tileFailNote')}</p>
       )}
+
+      <div className="nearby-section">
+        <h3>{t('nearbyTitle')}</h3>
+        <p className="pin-note">{t('nearbyHint')}</p>
+        <button className="btn" onClick={() => loadNearby()} disabled={!point || nearbyState === 'loading'}>
+          {nearbyState === 'loading' ? t('nearbyLoading') : t('nearbyBtn')}
+        </button>
+        {nearbyMsg && <p className="warn">{nearbyMsg}</p>}
+        {nearby.length > 0 && (
+          <div className="map-list">
+            {nearby.map((s) => (
+              <div
+                key={s.id}
+                className="map-row"
+                onClick={() => { if (mapObj.current && s.lat != null) mapObj.current.setView([s.lat, s.lng], 16); }}
+              >
+                <div>
+                  <b>{s.name}</b> · {s.categoryDetail || s.category}
+                  {s.distance != null && <span> · {fmtDist(s.distance)}</span>}
+                  {s.address && <div className="point-label">{s.address}</div>}
+                </div>
+                <div className="row-actions">
+                  {s.placeUrl && (
+                    <a className="btn small" target="_blank" rel="noreferrer" href={s.placeUrl}>
+                      {t('nearbyViewOnKakao')}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+            <p className="point-label">{t('nearbySource')}</p>
+          </div>
+        )}
+      </div>
 
       <div className="map-list">
         {sorted.length === 0 && <p>{t('noResults')}</p>}

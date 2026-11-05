@@ -67,6 +67,9 @@ label .input, label select { margin-top: 4px; }
 .map-controls .input { flex: 1; min-width: 200px; }
 .leaflet-map { height: 420px; border-radius: 12px; margin: 12px 0; z-index: 0; }
 .kfair-pin span { display: block; width: 18px; height: 18px; border-radius: 50%; background: #ff5a7a; border: 3px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.4); }
+.nearby-pin span { display: block; width: 14px; height: 14px; border-radius: 50%; background: #2ea44f; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+.nearby-section { margin-top: 16px; }
+.nearby-section h3 { margin: 0 0 4px; font-size: 20px; }
 .gps-dot-wrap { background: none; border: none; }
 .gps-dot { display: block; width: 16px; height: 16px; border-radius: 50%; background: #2f7bff; border: 3px solid #fff; box-shadow: 0 0 0 2px rgba(47,123,255,0.35), 0 1px 5px rgba(0,0,0,0.4); animation: gps-pulse 2s ease-out infinite; }
 @keyframes gps-pulse { 0% { box-shadow: 0 0 0 2px rgba(47,123,255,0.35), 0 0 0 0 rgba(47,123,255,0.35), 0 1px 5px rgba(0,0,0,0.4); } 70% { box-shadow: 0 0 0 2px rgba(47,123,255,0.35), 0 0 0 12px rgba(47,123,255,0), 0 1px 5px rgba(0,0,0,0.4); } 100% { box-shadow: 0 0 0 2px rgba(47,123,255,0.35), 0 0 0 0 rgba(47,123,255,0), 0 1px 5px rgba(0,0,0,0.4); } }
