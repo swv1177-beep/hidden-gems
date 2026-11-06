@@ -1,4 +1,4 @@
-// hidden gems 검증용 앱 서버 — 전부 테스트 모드 (실결제·실공급자 연동 없음).
+// Bapsang 검증용 앱 서버 — 전부 테스트 모드 (실결제·실공급자 연동 없음).
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -26,7 +26,7 @@ async function main() {
 
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
-    console.log(`hidden gems test server listening on ${PORT} (test mode)`);
+    console.log(`Bapsang test server listening on ${PORT} (test mode)`);
   });
 }
 

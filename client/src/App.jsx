@@ -103,7 +103,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <button className="logo" onClick={() => go('home')}>hidden gems</button>
+        <button className="logo" onClick={() => go('home')}>Bapsang</button>
         <span className="tagline">{t('tagline')}</span>
         <nav className="nav">
           <button onClick={() => go('home')}>{t('navHome')}</button>
@@ -194,7 +194,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p><b>hidden gems</b> — {t('tagline')}</p>
+        <p><b>Bapsang</b> — {t('tagline')}</p>
         <p>{t('testModeNote')}</p>
         <p>{t('brokerage')}</p>
       </footer>
