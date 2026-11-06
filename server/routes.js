@@ -4,6 +4,7 @@
 const express = require('express');
 const { pool } = require('./db');
 const { ensureStayRow, fmtDate, todayStr, addDays } = require('./schema');
+const { translateEnabled, translateTextViaDeepL } = require('./translate');
 
 const router = express.Router();
 
@@ -571,6 +572,85 @@ router.get('/mate/:code', async (req, res) => {
   });
 });
 
+// ---------- 사업자↔외국인 AI 번역 채팅 (예약별 스레드) ----------
+// 손님 측(내 예약)과 사장님 측(관리자 콘솔)이 같은 예약 코드로 대화한다.
+// 번역은 서버에서 DeepL로 수행한다. DEEPL_API_KEY 미설정 시 번역 없이 원문만
+// 저장·표시되고 채팅 자체는 계속 동작한다. 빠른 답장은 클라이언트 사전 번역이라
+// 키 없이도 번역되어 보인다. 번역 실패(한도 소진·인증 실패·타임아웃)도 원문 폴백.
+
+const OWNER_CHAT_LANGS = ['en', 'ko', 'ja', 'zh-CN', 'zh-TW', 'zh-HK', 'es'];
+
+async function customerLangOf(bookingCode) {
+  const { rows } = await pool.query(
+    "SELECT sender_lang FROM owner_messages WHERE booking_code = $1 AND sender = 'user' ORDER BY id DESC LIMIT 1",
+    [bookingCode]
+  );
+  const lang = rows[0] && rows[0].sender_lang;
+  return OWNER_CHAT_LANGS.includes(lang) ? lang : 'en';
+}
+
+function ownerMessageOut(r) {
+  return {
+    id: r.id,
+    sender: r.sender,
+    message: r.message,
+    senderLang: r.sender_lang,
+    translatedMessage: r.translated_message,
+    translatedLang: r.translated_lang,
+    createdAt: r.created_at ? new Date(r.created_at).toISOString() : null,
+  };
+}
+
+router.post('/owner-chat/messages', async (req, res) => {
+  const { bookingCode, message, lang, sender } = req.body || {};
+  const booking = await findBooking(bookingCode);
+  if (!booking) return res.status(404).json({ error: 'booking_not_found' });
+  if (booking.status !== 'confirmed') {
+    return res.status(400).json({ error: 'owner_chat_closed' });
+  }
+  const text = String(message || '').trim();
+  if (!text || text.length > 1000) {
+    return res.status(400).json({ error: 'invalid_message' });
+  }
+  const from = sender === 'owner' ? 'owner' : 'user';
+  const senderLang = OWNER_CHAT_LANGS.includes(lang)
+    ? lang
+    : (from === 'owner' ? 'ko' : 'en');
+  const targetLang = from === 'user' ? 'ko' : await customerLangOf(bookingCode);
+  let translated = null;
+  if (senderLang === targetLang) {
+    translated = text;
+  } else {
+    translated = await translateTextViaDeepL(text, targetLang);
+  }
+  const { rows } = await pool.query(
+    `INSERT INTO owner_messages (booking_code, sender, message, sender_lang, translated_message, translated_lang)
+     VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,
+    [bookingCode, from, text, senderLang, translated, translated ? targetLang : null]
+  );
+  res.json({
+    ok: true,
+    message: ownerMessageOut(rows[0]),
+    translateEnabled: translateEnabled(),
+    testMode: true,
+  });
+});
+
+router.get('/owner-chat/:code', async (req, res) => {
+  const booking = await findBooking(req.params.code);
+  if (!booking) return res.status(404).json({ error: 'booking_not_found' });
+  const { rows } = await pool.query(
+    'SELECT * FROM owner_messages WHERE booking_code = $1 ORDER BY id', [req.params.code]
+  );
+  res.json({
+    messages: rows.map(ownerMessageOut),
+    active: booking.status === 'confirmed',
+    customerLang: await customerLangOf(req.params.code),
+    translateEnabled: translateEnabled(),
+    testMode: true,
+  });
+});
+
 // ---------- 공급자/관리자 (관리자 인증 없음 — 테스트용, 실서비스 전 보호 필수) ----------
 
 router.post('/partners', async (req, res) => {
@@ -648,8 +728,17 @@ router.get('/admin/overview', async (req, res) => {
 
 router.get('/admin/bookings', async (req, res) => {
   const { rows } = await pool.query('SELECT * FROM bookings ORDER BY id DESC');
+  const chatCounts = await pool.query(
+    'SELECT booking_code, COUNT(*)::int AS c FROM owner_messages GROUP BY booking_code'
+  );
+  const chatMap = {};
+  for (const r of chatCounts.rows) chatMap[r.booking_code] = r.c;
   const out = [];
-  for (const r of rows) out.push(bookingOut(r, await productWithCount(r.product_slug)));
+  for (const r of rows) {
+    const b = bookingOut(r, await productWithCount(r.product_slug));
+    b.chatCount = chatMap[r.code] || 0;
+    out.push(b);
+  }
   res.json({ bookings: out, testMode: true });
 });
 

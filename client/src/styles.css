@@ -22,6 +22,8 @@ label .input, label select { margin-top: 4px; }
 .msg { padding: 8px 12px; border-radius: 12px; margin: 6px 0; max-width: 85%; }
 .msg.user { background: #ffe4ea; margin-left: auto; text-align: right; }
 .msg.bot { background: #f1f1f1; }
+.chat-orig { font-size: 12px; color: #888; margin-top: 4px; }
+.chat-tag { font-size: 11px; color: #999; }
 .chat-input-row { display: flex; gap: 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; align-items: center; }
 .chip { border: 1px solid #ddd; background: #fff; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px; }

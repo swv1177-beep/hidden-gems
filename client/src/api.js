@@ -35,6 +35,8 @@ export const api = {
   points: (email) => req(`/api/points?email=${encodeURIComponent(email)}`),
   mateMessages: (code) => req(`/api/mate/${encodeURIComponent(code)}`),
   mateSend: (body) => req('/api/mate/messages', { method: 'POST', body: JSON.stringify(body) }),
+  ownerChat: (code) => req(`/api/owner-chat/${encodeURIComponent(code)}`),
+  ownerChatSend: (body) => req('/api/owner-chat/messages', { method: 'POST', body: JSON.stringify(body) }),
   partnerApply: (body) => req('/api/partners', { method: 'POST', body: JSON.stringify(body) }),
   adminOverview: () => req('/api/admin/overview'),
   adminBookings: () => req('/api/admin/bookings'),

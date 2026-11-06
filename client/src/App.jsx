@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from './api.js';
-import { LANGS, makeT } from './i18n.js';
+import { LANGS, makeT, t as tLang } from './i18n.js';
 import {
   CATEGORIES, CATEGORY_IMAGES, CITY_POINTS, formatMoney, productArea,
   productName, productReview, productSupplier, sortByDistance, unitLabel
@@ -181,7 +181,7 @@ export default function App() {
           <BookingView t={t} currency={currency} product={bySlug[view.slug]} go={go} />
         )}
         {view.name === 'bookings' && (
-          <MyBookingsView t={t} currency={currency} products={products} go={go} />
+          <MyBookingsView t={t} currency={currency} products={products} go={go} lang={lang} />
         )}
         {view.name === 'map' && (
           <MapTab products={products} t={t} goDetail={goDetail} goBooking={goBooking} />
@@ -562,11 +562,94 @@ function BookingView({ t, currency, product: p, go }) {
   );
 }
 
-function MyBookingsView({ t, currency, products, go }) {
+const QUICK_REPLIES = ['qr1', 'qr2', 'qr3', 'qr4', 'qr5', 'qr6', 'qr7', 'qr8'];
+
+// 사업자↔외국인 AI 번역 채팅 패널. 손님 측(viewer=user)은 내 예약에서,
+// 사장님 측(viewer=owner)은 관리자 콘솔에서 같은 예약 코드로 연다.
+// 3초 폴링으로 실시간처럼 갱신한다. 번역은 서버에서 수행하고, 번역본이
+// 보는 사람의 언어와 일치할 때만 번역본을 보여주고 원문도 함께 표시한다.
+function OwnerChatPanel({ bookingCode, viewer, lang, t }) {
+  const [data, setData] = useState(null);
+  const [input, setInput] = useState('');
+  const [err, setErr] = useState('');
+  // 보는 사람의 표시 언어: 손님은 UI 언어, 사장님은 한국어 고정.
+  const viewerLang = viewer === 'owner' ? 'ko' : lang;
+  async function load() {
+    try {
+      const d = await api.ownerChat(bookingCode);
+      setData(d);
+    } catch (e) { setErr('loadFail'); }
+  }
+  useEffect(() => {
+    load();
+    const id = setInterval(load, 3000);
+    return () => clearInterval(id);
+  }, [bookingCode]);
+  async function send(text) {
+    const msg = (text || input).trim();
+    if (!msg) return;
+    setInput('');
+    setErr('');
+    try {
+      await api.ownerChatSend({ bookingCode, message: msg, lang: viewerLang, sender: viewer });
+      load();
+    } catch (e) { setErr(e.code === 'owner_chat_closed' ? 'ownerChatClosed' : 'loadFail'); }
+  }
+  function displayText(m) {
+    if (m.translatedMessage && m.translatedLang === viewerLang) return m.translatedMessage;
+    return m.message;
+  }
+  const msgs = (data && data.messages) || [];
+  return (
+    <div className="chat-panel">
+      <h3>{t('ownerChatTitle')}</h3>
+      <p className="muted">{t('ownerChatHint')}</p>
+      {viewer === 'owner' && data && data.customerLang && (
+        <p className="muted">{t('ownerChatCustomerLang')}: {(LANGS.find((l) => l.code === data.customerLang) || {}).label || data.customerLang}</p>
+      )}
+      {data && data.translateEnabled === false && <p className="warn">{t('ownerChatNoKey')}</p>}
+      {err && <p className="warn">{t(err)}</p>}
+      <div className="chat-log">
+        {msgs.map((m) => {
+          const own = (viewer === 'user' && m.sender === 'user') || (viewer === 'owner' && m.sender === 'owner');
+          const shown = displayText(m);
+          const translated = shown !== m.message;
+          return (
+            <div key={m.id} className={own ? 'msg user' : 'msg bot'}>
+              <div>{shown}</div>
+              {translated && <div className="chat-orig">{t('ownerChatOriginal')}: {m.message}</div>}
+              {translated && <div className="chat-tag">{t('ownerChatTranslated')}</div>}
+            </div>
+          );
+        })}
+      </div>
+      <div className="chips">
+        {QUICK_REPLIES.map((key) => (
+          <button key={key} className="chip" onClick={() => send(viewer === 'owner' ? tLang('ko', key) : t(key))}>
+            {viewer === 'owner' ? tLang('ko', key) : t(key)}
+          </button>
+        ))}
+      </div>
+      <div className="chat-input-row">
+        <input
+          className="input"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter') send(); }}
+          placeholder={t('ownerChatPlaceholder')}
+        />
+        <button className="btn primary" onClick={() => send()}>{t('chatSend')}</button>
+      </div>
+    </div>
+  );
+}
+
+function MyBookingsView({ t, currency, products, go, lang }) {
   const [email, setEmail] = useState('');
   const [list, setList] = useState(null);
   const [err, setErr] = useState('');
   const [msg, setMsg] = useState('');
+  const [chatCode, setChatCode] = useState('');
   const bySlug = {};
   products.forEach((p) => { bySlug[p.slug] = p; });
 
@@ -599,21 +682,27 @@ function MyBookingsView({ t, currency, products, go }) {
         const code = b.code || b.bookingCode;
         const p = bySlug[b.productSlug || b.product_slug] || b.product || {};
         return (
-          <div key={code} className="booking-row">
-            <div>
-              <b>{code}</b> · {p.nameEn || p.nameKo || b.productSlug}
-              <br />
-              {statusLabel(b, t)} · {payLabel(b, t)}
-              {b.totalKrw != null && <span> · {formatMoney(b.totalKrw, currency)}</span>}
+          <div key={code}>
+            <div className="booking-row">
+              <div>
+                <b>{code}</b> · {p.nameEn || p.nameKo || b.productSlug}
+                <br />
+                {statusLabel(b, t)} · {payLabel(b, t)}
+                {b.totalKrw != null && <span> · {formatMoney(b.totalKrw, currency)}</span>}
+              </div>
+              <div className="row-actions">
+                {(b.status === 'requested' || b.status === 'confirmed') && (
+                  <button className="btn small" onClick={() => cancel(code)}>{t('cancelBtn')}</button>
+                )}
+                {b.status === 'confirmed' && (
+                  <button className="btn small" onClick={() => setChatCode(chatCode === code ? '' : code)}>{t('ownerChatBtn')}</button>
+                )}
+                {b.status === 'completed' && (
+                  <button className="btn small primary" onClick={() => go('review', { code })}>{t('writeReview')}</button>
+                )}
+              </div>
             </div>
-            <div className="row-actions">
-              {(b.status === 'requested' || b.status === 'confirmed') && (
-                <button className="btn small" onClick={() => cancel(code)}>{t('cancelBtn')}</button>
-              )}
-              {b.status === 'completed' && (
-                <button className="btn small primary" onClick={() => go('review', { code })}>{t('writeReview')}</button>
-              )}
-            </div>
+            {chatCode === code && <OwnerChatPanel bookingCode={code} viewer="user" lang={lang} t={t} />}
           </div>
         );
       })}
@@ -686,6 +775,7 @@ function AdminView({ t, currency, products }) {
   const [invProduct, setInvProduct] = useState('');
   const [invDate, setInvDate] = useState('');
   const [invRooms, setInvRooms] = useState(10);
+  const [chatCode, setChatCode] = useState('');
 
   async function load() {
     try {
@@ -737,13 +827,17 @@ function AdminView({ t, currency, products }) {
       {bookings.map((b) => {
         const code = b.code || b.bookingCode;
         return (
-          <div key={code} className="booking-row">
-            <span><b>{code}</b> · {b.productSlug || b.product_slug} · {statusLabel(b, t)} · {payLabel(b, t)}</span>
-            <span className="row-actions">
-              <button className="btn small" onClick={() => act(() => api.adminBookingAction(code, 'confirm'))}>{t('confirmBtn')}</button>
-              <button className="btn small" onClick={() => act(() => api.adminBookingAction(code, 'complete'))}>{t('completeBtn')}</button>
-              <button className="btn small" onClick={() => act(() => api.adminBookingAction(code, 'cancel'))}>{t('cancelBtn')}</button>
-            </span>
+          <div key={code}>
+            <div className="booking-row">
+              <span><b>{code}</b> · {b.productSlug || b.product_slug} · {statusLabel(b, t)} · {payLabel(b, t)}</span>
+              <span className="row-actions">
+                <button className="btn small" onClick={() => act(() => api.adminBookingAction(code, 'confirm'))}>{t('confirmBtn')}</button>
+                <button className="btn small" onClick={() => act(() => api.adminBookingAction(code, 'complete'))}>{t('completeBtn')}</button>
+                <button className="btn small" onClick={() => act(() => api.adminBookingAction(code, 'cancel'))}>{t('cancelBtn')}</button>
+                <button className="btn small" onClick={() => setChatCode(chatCode === code ? '' : code)}>{t('ownerChatAdminBtn')}{b.chatCount ? ` (${b.chatCount})` : ''}</button>
+              </span>
+            </div>
+            {chatCode === code && <OwnerChatPanel bookingCode={code} viewer="owner" lang="ko" t={t} />}
           </div>
         );
       })}

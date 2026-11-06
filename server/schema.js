@@ -78,6 +78,11 @@ async function initDb() {
     id SERIAL PRIMARY KEY, booking_code TEXT, sender TEXT, message TEXT,
     created_at TIMESTAMPTZ DEFAULT now()
   )`);
+  await pool.query(`CREATE TABLE IF NOT EXISTS owner_messages (
+    id SERIAL PRIMARY KEY, booking_code TEXT, sender TEXT, message TEXT,
+    sender_lang TEXT, translated_message TEXT, translated_lang TEXT,
+    created_at TIMESTAMPTZ DEFAULT now()
+  )`);
   await pool.query(`CREATE TABLE IF NOT EXISTS partner_applications (
     id SERIAL PRIMARY KEY, business_name TEXT, business_number TEXT, email TEXT,
     category TEXT, status TEXT DEFAULT 'pending',

@@ -50,6 +50,9 @@ hidden-gems/
 - point_ledger(id SERIAL PK, email, booking_code, points INT, kind TEXT, created_at)
   - kind: review_base | review_bonus
 - mate_messages(id SERIAL PK, booking_code, sender TEXT, message TEXT, created_at)
+- owner_messages(id SERIAL PK, booking_code, sender TEXT, message TEXT,
+  sender_lang TEXT, translated_message TEXT, translated_lang TEXT, created_at)
+  - 사업자↔외국인 번역 채팅 스레드. sender: user | owner.
 - partner_applications(id SERIAL PK, business_name, business_number TEXT, email, category TEXT,
   status TEXT DEFAULT 'pending', created_at) — status: pending | approved | rejected
 
@@ -117,6 +120,26 @@ hidden-gems/
   - 긴급 키워드(긴급, urgent, 응급, 도와주세요, emergency) 포함 시 urgent=true와
     '1분 이내 응답 목표' 문구를 답장에 포함한다.
 - GET /api/mate/:code → { messages, active, expiresAt }
+
+### 사업자↔외국인 AI 번역 채팅 (예약별 스레드)
+- POST /api/owner-chat/messages { bookingCode, message, lang, sender }
+  - sender: user(손님) | owner(사장님). 예약 status가 confirmed가 아니면 400 { error: 'owner_chat_closed' }.
+  - 빈 메시지·1000자 초과 시 400 { error: 'invalid_message' }. 없는 예약 코드 시 404.
+  - 손님 메시지(lang=손님 UI 언어)는 한국어로, 사장님 메시지(ko)는 손님 언어로 번역한다.
+    손님 언어는 스레드의 최근 손님 메시지 sender_lang에서 가져오고, 없으면 en.
+  - 번역은 서버에서 DeepL로 수행한다(server/translate.js). DEEPL_API_KEY 미설정·번역
+    실패(한도 소진 456·인증 실패·타임아웃 5초) 시 translatedMessage=null로 저장하고
+    채팅은 원문으로 계속 동작한다. 동일 언어면 API를 호출하지 않고 원문을 그대로 저장한다.
+  - 응답: { ok, message: { id, sender, message, senderLang, translatedMessage, translatedLang, createdAt }, translateEnabled }.
+- GET /api/owner-chat/:code → { messages, active, customerLang, translateEnabled }
+  - active는 예약 confirmed 여부. 클라이언트는 3초 폴링으로 갱신한다.
+- GET /api/admin/bookings 응답의 각 예약에 chatCount(스레드 메시지 수)를 포함한다.
+- 클라이언트: 내 예약(손님 측, 확정 예약에만 '사장님께 메시지' 버튼)과 관리자 콘솔
+  (사장님 측, 예약별 채팅 버튼 + 메시지 수)에 OwnerChatPanel을 둔다.
+  - 빠른 답장 8개(출발·영업시간·예약 변경·알레르기·빈자리·메뉴 추천·가능·잠시 대기)는
+    7개 언어 사전 번역이라 키 없이도 상대 언어로 보인다.
+  - 번역본이 보는 사람의 언어와 일치하면 번역본을 크게, 원문은 작게 함께 표시한다.
+  - translateEnabled=false면 '자동 번역 키 미설정 — 직접 입력 메시지는 원문 표시' 안내를 보여준다.
 
 ### 공급자/관리자 (관리자 인증 없음 — 테스트용임을 README에 명시, 실서비스 전 보호 필수)
 - POST /api/partners { businessName, businessNumber, email, category }
