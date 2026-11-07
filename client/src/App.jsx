@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { api } from './api.js';
 import { LANGS, makeT, t as tLang } from './i18n.js';
 import {
@@ -6,6 +6,25 @@ import {
   productName, productReview, productSupplier, sortByDistance, unitLabel
 } from './utils.js';
 import MapTab from './map.jsx';
+
+// Error boundary for the map tab only: a map-API failure must never blank
+// the whole app (no boundary above this tab), so a render/effect error in
+// MapTab degrades to the tile-failure note instead of a white page.
+class MapErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { failed: false };
+  }
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  render() {
+    if (this.state.failed) {
+      return <p className="warn">{this.props.t('tileFailNote')}</p>;
+    }
+    return this.props.children;
+  }
+}
 
 // Every <img> in the app goes through this component so a failed image URL
 // always degrades to a gradient block instead of a broken icon. No
@@ -184,7 +203,9 @@ export default function App() {
           <MyBookingsView t={t} currency={currency} products={products} go={go} lang={lang} />
         )}
         {view.name === 'map' && (
-          <MapTab products={products} t={t} goDetail={goDetail} goBooking={goBooking} />
+          <MapErrorBoundary t={t}>
+            <MapTab products={products} t={t} goDetail={goDetail} goBooking={goBooking} />
+          </MapErrorBoundary>
         )}
         {view.name === 'partner' && <PartnerView t={t} />}
         {view.name === 'admin' && <AdminView t={t} currency={currency} products={products} />}

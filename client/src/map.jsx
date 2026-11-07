@@ -107,9 +107,13 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
     return () => { cancelled = true; };
   }, []);
 
-  // Markers follow the filtered list.
+  // Markers follow the filtered list. Any map-API error here must degrade
+  // to the tile-failure note, never unmount the whole app (there is no
+  // error boundary above this tab, so an uncaught effect error blanks
+  // the page).
   useEffect(() => {
     if (!mapReady || !mapObj.current) return;
+    try {
     const maps = window.kakao.maps;
     const map = mapObj.current;
     const closeInfo = () => {
@@ -120,23 +124,27 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
     };
     const addPin = (lat, lng, className, html, popupHtml) => {
       const pos = new maps.LatLng(lat, lng);
+      // Build the pin element ourselves and pass the element (not an HTML
+      // string) as the overlay content: overlay.getContent() returns a
+      // string for string content, so attaching the click listener to our
+      // own element is the only reliable way to make pins clickable.
+      const el = document.createElement('div');
+      el.className = className;
+      el.innerHTML = html;
       const overlay = new maps.CustomOverlay({
         position: pos,
-        content: `<div class="${className}">${html}</div>`,
+        content: el,
         xAnchor: 0.5,
         yAnchor: 0.5,
         map
       });
       if (popupHtml) {
-        const node = overlay.getContent();
-        if (node) {
-          node.addEventListener('click', () => {
-            closeInfo();
-            const info = new maps.InfoWindow({ position: pos, content: popupHtml, removable: true });
-            info.open(map);
-            openInfoRef.current = info;
-          });
-        }
+        el.addEventListener('click', () => {
+          closeInfo();
+          const info = new maps.InfoWindow({ position: pos, content: popupHtml, removable: true });
+          info.open(map);
+          openInfoRef.current = info;
+        });
       }
       return overlay;
     };
@@ -202,6 +210,9 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       );
       nearbyMarkersRef.current.push(marker);
     });
+    } catch (e) {
+      setTileFailed(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapReady, sorted, point, city, pointLabel, accuracy, nearby]);
 
