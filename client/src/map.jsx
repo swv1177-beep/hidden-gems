@@ -30,6 +30,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
   const [locMsg, setLocMsg] = useState('');
   const [tileFailed, setTileFailed] = useState(false);
   const [mapReady, setMapReady] = useState(false);
+  const lastViewTargetRef = useRef(null); // last point/city the map was centered on; user zoom is never reset
 
   const neighborhoods = [...new Set(products.map((p) => p.areaKo).filter(Boolean))].sort();
 
@@ -90,10 +91,16 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
         marker.bindPopup(`<b>${escapeHtml(p.nameEn || p.nameKo || '')}</b><br/>${escapeHtml(p.areaEn || p.areaKo || '')}`);
         markersRef.current.push(marker);
       });
-      if (point) mapObj.current.setView([point.lat, point.lng], 13);
-      else if (city !== 'ALL' && CITY_POINTS[city]) {
-        const cp = CITY_POINTS[city];
-        mapObj.current.setView([cp.lat, cp.lng], 12);
+      // Recenter only when the view target itself changes (an explicit
+      // location/city pick). Marker/list updates must not move the map,
+      // and the user's zoom is never overridden: keep the current zoom.
+      const targetKey = point
+        ? `p:${point.lat.toFixed(5)},${point.lng.toFixed(5)}`
+        : (city !== 'ALL' && CITY_POINTS[city] ? `c:${city}` : null);
+      if (targetKey && targetKey !== lastViewTargetRef.current) {
+        lastViewTargetRef.current = targetKey;
+        const [tLat, tLng] = point ? [point.lat, point.lng] : [CITY_POINTS[city].lat, CITY_POINTS[city].lng];
+        mapObj.current.setView([tLat, tLng], mapObj.current.getZoom());
       }
       // "You are here" dot: only for a real GPS fix, never for a fallback
       // neighborhood/city reference point.
@@ -188,7 +195,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       setAccuracy(pos.coords.accuracy != null ? Math.round(pos.coords.accuracy) : null);
       setLocState('ok');
       setLocMsg('');
-      if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], 14);
+      if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], Math.max(mapObj.current.getZoom(), 14));
       loadNearby(pt);
     };
     const onErr = (err, retried) => {
@@ -237,7 +244,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
     if (p && p.lat != null) {
       setPoint({ lat: p.lat, lng: p.lng });
       setPointLabel(area);
-      if (mapObj.current) mapObj.current.setView([p.lat, p.lng], 14);
+      if (mapObj.current) mapObj.current.setView([p.lat, p.lng], Math.max(mapObj.current.getZoom(), 14));
     }
   }
 
