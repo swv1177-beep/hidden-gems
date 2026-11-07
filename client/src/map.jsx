@@ -2,20 +2,57 @@ import { useEffect, useRef, useState } from 'react';
 import { CITY_POINTS, haversine, sortByDistance } from './utils.js';
 import { api } from './api.js';
 
-// Map tab: Leaflet + OpenStreetMap tiles, with a full list fallback.
+// KakaoMap JavaScript key (browser key; restricted by registered site
+// domain in the Kakao Developers console). Never use the REST API key here.
+const KAKAO_JS_KEY = '033b181e3eaee021ed7a02028ad676e6';
+
+// Load the KakaoMap JS SDK once. Resolves with window.kakao.maps.
+let kakaoMapsPromise = null;
+function loadKakaoMaps() {
+  if (kakaoMapsPromise) return kakaoMapsPromise;
+  kakaoMapsPromise = new Promise((resolve, reject) => {
+    const boot = () => {
+      try {
+        window.kakao.maps.load(() => resolve(window.kakao.maps));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    if (window.kakao && window.kakao.maps) {
+      boot();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_JS_KEY}&autoload=false`;
+    script.async = true;
+    script.onload = () => {
+      if (window.kakao && window.kakao.maps) boot();
+      else reject(new Error('kakao maps unavailable'));
+    };
+    script.onerror = () => reject(new Error('kakao sdk load failed'));
+    document.head.appendChild(script);
+  });
+  return kakaoMapsPromise;
+}
+
+// Map tab: KakaoMap tiles + Kakao Local place data, with a full list fallback.
 // - All catalog products get a neighborhood-level pin (catalog lat/lng).
-// - Tile failure hides the map container but the list, filters and booking
-//   links keep working.
+// - Map-load failure hides the map container but the list, filters and
+//   booking links keep working.
 // - Geolocation: cache-first (maximumAge large, timeout 10s), per-cause
 //   messages, and a neighborhood-chip reference-point fallback (the embedded
 //   panel iframe blocks geolocation, so the fallback is mandatory).
+// - Zoom rule: the map is recentered only when the view target itself
+//   changes (an explicit location/city pick). Marker/list updates never
+//   move the map, and the user's zoom level is never reset.
 export default function MapTab({ products, t, goDetail, goBooking }) {
   const mapRef = useRef(null);
-  const mapObj = useRef(null);
+  const mapObj = useRef(null); // kakao.maps.Map
   const markersRef = useRef([]);
   const userMarkerRef = useRef(null); // "You are here" dot (real GPS fix only)
   const userCircleRef = useRef(null); // GPS accuracy circle
   const nearbyMarkersRef = useRef([]); // KakaoMap nearby-shop markers
+  const openInfoRef = useRef(null); // currently open InfoWindow
   const [nearby, setNearby] = useState([]); // live KakaoMap results (never stored)
   const [nearbyState, setNearbyState] = useState('idle'); // idle | loading | ok | fail | nokey
   const [nearbyMsg, setNearbyMsg] = useState('');
@@ -30,7 +67,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
   const [locMsg, setLocMsg] = useState('');
   const [tileFailed, setTileFailed] = useState(false);
   const [mapReady, setMapReady] = useState(false);
-  const lastViewTargetRef = useRef(null); // last point/city the map was centered on; user zoom is never reset
+  const lastViewTargetRef = useRef(null); // last point/city the map was centered on
 
   const neighborhoods = [...new Set(products.map((p) => p.areaKo).filter(Boolean))].sort();
 
@@ -51,19 +88,16 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
   });
   const sorted = sortByDistance(filtered, point);
 
-  // Init Leaflet once (dynamic import so a Leaflet failure never breaks the page).
+  // Init KakaoMap once (SDK failure never breaks the page).
   useEffect(() => {
     let cancelled = false;
-    import('leaflet').then((L) => {
-      if (cancelled || !mapRef.current) return;
+    loadKakaoMaps().then((maps) => {
+      if (cancelled || !mapRef.current || mapObj.current) return;
       try {
-        const map = L.map(mapRef.current).setView([37.57202217, 126.97683236], 12);
-        const layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '&copy; OpenStreetMap contributors'
+        const map = new maps.Map(mapRef.current, {
+          center: new maps.LatLng(37.57202217, 126.97683236),
+          level: 7
         });
-        layer.on('tileerror', () => setTileFailed(true));
-        layer.addTo(map);
         mapObj.current = map;
         setMapReady(true);
       } catch (e) {
@@ -76,76 +110,98 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
   // Markers follow the filtered list.
   useEffect(() => {
     if (!mapReady || !mapObj.current) return;
-    import('leaflet').then((L) => {
-      markersRef.current.forEach((m) => m.remove());
-      markersRef.current = [];
-      sorted.forEach((p) => {
-        if (p.lat == null || p.lng == null) return;
-        const icon = L.divIcon({
-          className: 'kfair-pin',
-          html: '<span></span>',
-          iconSize: [18, 18],
-          iconAnchor: [9, 9]
-        });
-        const marker = L.marker([p.lat, p.lng], { icon }).addTo(mapObj.current);
-        marker.bindPopup(`<b>${escapeHtml(p.nameEn || p.nameKo || '')}</b><br/>${escapeHtml(p.areaEn || p.areaKo || '')}`);
-        markersRef.current.push(marker);
-      });
-      // Recenter only when the view target itself changes (an explicit
-      // location/city pick). Marker/list updates must not move the map,
-      // and the user's zoom is never overridden: keep the current zoom.
-      const targetKey = point
-        ? `p:${point.lat.toFixed(5)},${point.lng.toFixed(5)}`
-        : (city !== 'ALL' && CITY_POINTS[city] ? `c:${city}` : null);
-      if (targetKey && targetKey !== lastViewTargetRef.current) {
-        lastViewTargetRef.current = targetKey;
-        const [tLat, tLng] = point ? [point.lat, point.lng] : [CITY_POINTS[city].lat, CITY_POINTS[city].lng];
-        mapObj.current.setView([tLat, tLng], mapObj.current.getZoom());
+    const maps = window.kakao.maps;
+    const map = mapObj.current;
+    const closeInfo = () => {
+      if (openInfoRef.current) {
+        openInfoRef.current.close();
+        openInfoRef.current = null;
       }
-      // "You are here" dot: only for a real GPS fix, never for a fallback
-      // neighborhood/city reference point.
-      if (userMarkerRef.current) { userMarkerRef.current.remove(); userMarkerRef.current = null; }
-      if (userCircleRef.current) { userCircleRef.current.remove(); userCircleRef.current = null; }
-      if (point && pointLabel === 'GPS') {
-        const dot = L.marker([point.lat, point.lng], {
-          icon: L.divIcon({
-            className: 'gps-dot-wrap',
-            html: '<span class="gps-dot"></span>',
-            iconSize: [18, 18],
-            iconAnchor: [9, 9]
-          }),
-          interactive: false,
-          keyboard: false
-        }).addTo(mapObj.current);
-        userMarkerRef.current = dot;
-        if (accuracy != null && accuracy > 0) {
-          userCircleRef.current = L.circle([point.lat, point.lng], {
-            radius: accuracy,
-            color: '#2f7bff',
-            weight: 1,
-            fillColor: '#2f7bff',
-            fillOpacity: 0.12,
-            interactive: false
-          }).addTo(mapObj.current);
+    };
+    const addPin = (lat, lng, className, html, popupHtml) => {
+      const pos = new maps.LatLng(lat, lng);
+      const overlay = new maps.CustomOverlay({
+        position: pos,
+        content: `<div class="${className}">${html}</div>`,
+        xAnchor: 0.5,
+        yAnchor: 0.5,
+        map
+      });
+      if (popupHtml) {
+        const node = overlay.getContent();
+        if (node) {
+          node.addEventListener('click', () => {
+            closeInfo();
+            const info = new maps.InfoWindow({ position: pos, content: popupHtml, removable: true });
+            info.open(map);
+            openInfoRef.current = info;
+          });
         }
       }
-      // Nearby shops from KakaoMap (green dots, distinct from pink product pins).
-      nearbyMarkersRef.current.forEach((m) => m.remove());
-      nearbyMarkersRef.current = [];
-      nearby.forEach((s) => {
-        if (s.lat == null || s.lng == null) return;
-        const marker = L.marker([s.lat, s.lng], {
-          icon: L.divIcon({
-            className: 'nearby-pin',
-            html: '<span></span>',
-            iconSize: [14, 14],
-            iconAnchor: [7, 7]
-          })
-        }).addTo(mapObj.current);
-        marker.bindPopup(`<b>${escapeHtml(s.name || '')}</b><br/>${escapeHtml(s.categoryDetail || s.category || '')}${s.distance != null ? ` · ${fmtDist(s.distance)}` : ''}`);
-        nearbyMarkersRef.current.push(marker);
+      return overlay;
+    };
+
+    markersRef.current.forEach((m) => m.setMap(null));
+    markersRef.current = [];
+    sorted.forEach((p) => {
+      if (p.lat == null || p.lng == null) return;
+      const marker = addPin(
+        p.lat, p.lng, 'kfair-pin', '<span></span>',
+        `<div style="padding:6px 10px;min-width:120px"><b>${escapeHtml(p.nameEn || p.nameKo || '')}</b><br/>${escapeHtml(p.areaEn || p.areaKo || '')}</div>`
+      );
+      markersRef.current.push(marker);
+    });
+
+    // Recenter only when the view target itself changes (an explicit
+    // location/city pick). Marker/list updates must not move the map,
+    // and the user's zoom level is never touched here.
+    const targetKey = point
+      ? `p:${point.lat.toFixed(5)},${point.lng.toFixed(5)}`
+      : (city !== 'ALL' && CITY_POINTS[city] ? `c:${city}` : null);
+    if (targetKey && targetKey !== lastViewTargetRef.current) {
+      lastViewTargetRef.current = targetKey;
+      const [tLat, tLng] = point ? [point.lat, point.lng] : [CITY_POINTS[city].lat, CITY_POINTS[city].lng];
+      map.setCenter(new maps.LatLng(tLat, tLng));
+    }
+
+    // "You are here" dot: only for a real GPS fix, never for a fallback
+    // neighborhood/city reference point.
+    if (userMarkerRef.current) { userMarkerRef.current.setMap(null); userMarkerRef.current = null; }
+    if (userCircleRef.current) { userCircleRef.current.setMap(null); userCircleRef.current = null; }
+    if (point && pointLabel === 'GPS') {
+      const dot = new maps.CustomOverlay({
+        position: new maps.LatLng(point.lat, point.lng),
+        content: '<div class="gps-dot-wrap" style="pointer-events:none"><span class="gps-dot"></span></div>',
+        xAnchor: 0.5,
+        yAnchor: 0.5,
+        map
       });
-    }).catch(() => {});
+      userMarkerRef.current = dot;
+      if (accuracy != null && accuracy > 0) {
+        userCircleRef.current = new maps.Circle({
+          center: new maps.LatLng(point.lat, point.lng),
+          radius: accuracy,
+          strokeWeight: 1,
+          strokeColor: '#2f7bff',
+          strokeOpacity: 1,
+          fillColor: '#2f7bff',
+          fillOpacity: 0.12,
+          map
+        });
+      }
+    }
+
+    // Nearby shops from KakaoMap (green dots, distinct from pink product pins).
+    nearbyMarkersRef.current.forEach((m) => m.setMap(null));
+    nearbyMarkersRef.current = [];
+    nearby.forEach((s) => {
+      if (s.lat == null || s.lng == null) return;
+      const marker = addPin(
+        s.lat, s.lng, 'nearby-pin', '<span></span>',
+        `<div style="padding:6px 10px;min-width:120px"><b>${escapeHtml(s.name || '')}</b><br/>${escapeHtml(s.categoryDetail || s.category || '')}${s.distance != null ? ` · ${fmtDist(s.distance)}` : ''}</div>`
+      );
+      nearbyMarkersRef.current.push(marker);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapReady, sorted, point, city, pointLabel, accuracy, nearby]);
 
@@ -180,6 +236,15 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
     return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  // Kakao level is inverted vs Leaflet zoom (smaller = closer). Never zoom
+  // out on an explicit jump: zoom in to at most the given level.
+  function jumpTo(lat, lng, maxLevel) {
+    const map = mapObj.current;
+    if (!map) return;
+    map.setCenter(new window.kakao.maps.LatLng(lat, lng));
+    map.setLevel(Math.min(map.getLevel(), maxLevel));
+  }
+
   function findMyLocation() {
     if (!navigator.geolocation) {
       setLocState('fail');
@@ -195,7 +260,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       setAccuracy(pos.coords.accuracy != null ? Math.round(pos.coords.accuracy) : null);
       setLocState('ok');
       setLocMsg('');
-      if (mapObj.current) mapObj.current.setView([pt.lat, pt.lng], Math.max(mapObj.current.getZoom(), 14));
+      jumpTo(pt.lat, pt.lng, 5);
       loadNearby(pt);
     };
     const onErr = (err, retried) => {
@@ -244,7 +309,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
     if (p && p.lat != null) {
       setPoint({ lat: p.lat, lng: p.lng });
       setPointLabel(area);
-      if (mapObj.current) mapObj.current.setView([p.lat, p.lng], Math.max(mapObj.current.getZoom(), 14));
+      jumpTo(p.lat, p.lng, 5);
     }
   }
 
@@ -303,7 +368,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
       </div>
 
       {!tileFailed ? (
-        <div ref={mapRef} className="leaflet-map" />
+        <div ref={mapRef} className="kakao-map" />
       ) : (
         <p className="warn">{t('tileFailNote')}</p>
       )}
@@ -321,7 +386,7 @@ export default function MapTab({ products, t, goDetail, goBooking }) {
               <div
                 key={s.id}
                 className="map-row"
-                onClick={() => { if (mapObj.current && s.lat != null) mapObj.current.setView([s.lat, s.lng], 16); }}
+                onClick={() => { if (mapObj.current && s.lat != null) jumpTo(s.lat, s.lng, 3); }}
               >
                 <div>
                   <b>{s.name}</b> · {s.categoryDetail || s.category}
