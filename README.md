@@ -23,7 +23,8 @@
 - 로컬 메이트: 예약 확정 후 7일간 예약별 지원 채널 (규칙 기반 정형 문안).
 - 사업자↔외국인 AI 번역 채팅: 확정 예약별 실시간 스레드. 손님은 내 예약에서,
   사장님은 관리자 콘솔에서 대화한다. 빠른 답장 8개는 7개 언어 사전 번역.
-  자유 입력 메시지는 서버에서 DeepL로 번역한다 (`DEEPL_API_KEY` 환경변수 설정 시).
+  자유 입력 메시지는 서버에서 Azure Translator로 번역한다
+  (`AZURE_TRANSLATOR_KEY` + `AZURE_TRANSLATOR_REGION` 환경변수 설정 시).
   키가 없으면 원문으로 표시되고 채팅은 계속 동작한다. 3초 폴링 갱신.
 - 공급자 가입: 사업자등록번호 10자리 검증 → 관리자 승인/반려.
 - 관리자: 예약·결제·매출 집계, 숙박 빈방 조정. **인증이 없습니다. 테스트용입니다.**
@@ -53,7 +54,7 @@ hidden-gems/
 │   ├── db.js            # DB 어댑터 (DATABASE_URL 있으면 실제 Postgres, 없으면 pg-mem)
 │   ├── schema.js        # 스키마 자동 생성 + 카탈로그 seed (insert-if-empty)
 │   └── routes.js        # API 라우트
-└── client/              # Vite + React 프론트엔드 (leaflet 지도 포함)
+└── client/              # Vite + React 프론트엔드 (카카오맵 지도 포함)
     ├── src/             # App.jsx, api.js, i18n.js, map.jsx, utils.js, styles.css
     └── dist/            # 빌드 결과물 (npm run build로 생성)
 ```
@@ -76,13 +77,12 @@ npm start            # 기본 포트 3000 (PORT 환경변수로 변경 가능)
 
 ## 선택 환경변수 (Render 대시보드 → Environment에서 설정, 재배포 불필요)
 
-- `DEEPL_API_KEY`: 사업자↔외국인 채팅의 자유 입력 메시지 자동 번역용 DeepL 키.
+- `AZURE_TRANSLATOR_KEY` + `AZURE_TRANSLATOR_REGION`: 사업자↔외국인 채팅의 자유 입력
+  메시지 자동 번역용 Azure Translator 키와 리소스 지역(예: `koreacentral`).
   서버에서만 사용하며 클라이언트에 노출되지 않는다. 미설정 시 채팅은 원문으로
   동작하고 빠른 답장(사전 번역)만 번역되어 보인다.
-  무료 플랜: 신규 가입은 Developer 플랜(1회 100만 자 무료)으로 바뀌었고, 기존
-  API Free 계정은 월 50만 자다. 키가 `:fx`로 끝나면 Free 엔드포인트
-  (api-free.deepl.com), 아니면 Pro 엔드포인트(api.deepl.com)를 쓴다.
-  한도 소진 시 456을 반환하고 번역만 원문으로 폴백한다 (과금 전환 없음).
+  무료 티어 F0: 월 200만 자, 매월 갱신. 한도 소진·인증 실패 시 번역만 원문으로
+  폴백한다 (과금 전환 없음). DeepL은 2026-11-07 사용자 결정으로 폐기됨.
 
 ## Render 배포 순서 (부모 에이전트 단계 — 이 저장소에서는 푸시·배포를 하지 않음)
 

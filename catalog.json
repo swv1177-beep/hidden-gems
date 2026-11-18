@@ -1,45 +1,2491 @@
-{"fareRoutes":[{"distanceKm":58,"id":"icn-hongdae","minutes":70,"nameEn":"Incheon Airport → Hongdae","nameKo":"인천공항 → 홍대","tollKrw":6500},{"distanceKm":3.5,"id":"seoulstation-gyeongbokgung","minutes":15,"nameEn":"Seoul Station → Gyeongbokgung","nameKo":"서울역 → 경복궁","tollKrw":0},{"distanceKm":12,"id":"busanstation-haeundae","minutes":25,"nameEn":"Busan Station → Haeundae","nameKo":"부산역 → 해운대","tollKrw":0},{"distanceKm":45,"id":"jejuairport-seogwipo","minutes":55,"nameEn":"Jeju Airport → Seogwipo","nameKo":"제주공항 → 서귀포","tollKrw":0}],"krwPerUsd":1350,"packages":[],"products":[
-{"areaEn":"Bukchon, Jongno-gu","areaKo":"북촌 · 종로구","bookingCount":0,"category":"STAY","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.58147826,"lng":126.98495294,"localRegular":true,"nameEn":"Hanok Stay in Bukchon","nameKo":"북촌 한옥 스테이","onsitePriceKrw":190000,"priceKrw":145000,"rating":4.9,"reviewCount":312,"reviewEn":"Sleeping in a real hanok was unforgettable.","reviewKo":"진짜 한옥에서 자는 경험이 잊을 수 없었어요.","slug":"stay-hanok","subcategory":null,"supplierNameEn":"Hanok Stay in Bukchon","supplierNameKo":"북촌 한옥 스테이","unit":"NIGHT"},
-{"areaEn":"Seogwipo","areaKo":"서귀포","bookingCount":0,"category":"STAY","city":"JEJU","isMeterTaxi":false,"isSample":false,"lat":33.28237013,"lng":126.53501171,"localRegular":true,"nameEn":"Jeju Stone House","nameKo":"제주 돌집","onsitePriceKrw":210000,"priceKrw":168000,"rating":4.8,"reviewCount":208,"reviewEn":"Quiet stone house, ten minutes from the sea.","reviewKo":"바다에서 10분 거리, 조용한 돌집이었어요.","slug":"stay-jeju-stone","subcategory":null,"supplierNameEn":"Jeju Stone House","supplierNameKo":"제주 돌집","unit":"NIGHT"},
-{"areaEn":"Busan Station, Jung-gu","areaKo":"부산역 · 중구","bookingCount":0,"category":"STAY","city":"BUSAN","isMeterTaxi":false,"isSample":false,"lat":35.11571662,"lng":129.04282303,"localRegular":true,"nameEn":"Busan Harbor View Hotel","nameKo":"부산 하버뷰 호텔","onsitePriceKrw":160000,"priceKrw":128000,"rating":4.7,"reviewCount":421,"reviewEn":"Great harbor view and easy subway access.","reviewKo":"항구 전망이 좋고 지하철 접근이 쉬웠어요.","slug":"stay-busan-harbor","subcategory":null,"supplierNameEn":"Busan Harbor View Hotel","supplierNameKo":"부산 하버뷰 호텔","unit":"NIGHT"},
-{"areaEn":"Hongdae, Mapo-gu","areaKo":"홍대 · 마포구","bookingCount":0,"category":"RIDE","city":"SEOUL","isMeterTaxi":true,"isSample":false,"lat":37.55744241,"lng":126.92439689,"localRegular":false,"nameEn":"Incheon Airport → Hongdae Meter Taxi","nameKo":"인천공항 → 홍대 미터 택시","onsitePriceKrw":85000,"priceKrw":58000,"rating":4.9,"reviewCount":1054,"reviewEn":"Driver used the meter, no extra cash asked.","reviewKo":"미터기로 운행했고 현장 추가 요금이 없었어요.","slug":"ride-icn-hongdae","subcategory":null,"supplierNameEn":"Incheon Airport → Hongdae Meter Taxi","supplierNameKo":"인천공항 → 홍대 미터 택시","unit":"RIDE"},
-{"areaEn":"Gwanghwamun, Jongno-gu","areaKo":"광화문 · 종로구","bookingCount":0,"category":"RIDE","city":"SEOUL","isMeterTaxi":true,"isSample":false,"lat":37.57202217,"lng":126.97683236,"localRegular":false,"nameEn":"Seoul Night City Meter Taxi Tour","nameKo":"서울 야간 미터 택시 투어","onsitePriceKrw":98000,"priceKrw":72000,"rating":4.8,"reviewCount":366,"reviewEn":"Night views without worrying about the fare.","reviewKo":"요금 걱정 없이 야경을 즐길 수 있었어요.","slug":"ride-seoul-night","subcategory":null,"supplierNameEn":"Seoul Night City Meter Taxi Tour","supplierNameKo":"서울 야간 미터 택시 투어","unit":"RIDE"},
-{"areaEn":"Jeju Airport, Jeju City","areaKo":"제주공항 · 제주시","bookingCount":0,"category":"RIDE","city":"JEJU","isMeterTaxi":true,"isSample":false,"lat":33.50710455,"lng":126.49312402,"localRegular":false,"nameEn":"Jeju Island Day Meter Taxi","nameKo":"제주 하루 미터 택시","onsitePriceKrw":180000,"priceKrw":135000,"rating":4.9,"reviewCount":289,"reviewEn":"One driver for the whole island day, metered.","reviewKo":"하루 종일 같은 기사님, 미터 요금이었어요.","slug":"ride-jeju-day","subcategory":null,"supplierNameEn":"Jeju Island Day Meter Taxi","supplierNameKo":"제주 하루 미터 택시","unit":"RIDE"},
-{"areaEn":"Gongdeok, Mapo-gu","areaKo":"공덕 · 마포구","bookingCount":0,"category":"FOOD","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.5432206,"lng":126.95281765,"localRegular":true,"nameEn":"Korean BBQ Set Menu","nameKo":"한식 바비큐 세트","onsitePriceKrw":60000,"priceKrw":45000,"rating":4.8,"reviewCount":932,"reviewEn":"The set menu price was exactly what we paid.","reviewKo":"세트 가격 그대로 결제됐어요.","slug":"food-bbq","subcategory":null,"supplierNameEn":"Korean BBQ Set Menu","supplierNameKo":"한식 바비큐 세트","unit":"PERSON"},
-{"areaEn":"Jagalchi Market, Jung-gu","areaKo":"자갈치시장 · 중구","bookingCount":0,"category":"FOOD","city":"BUSAN","isMeterTaxi":false,"isSample":false,"lat":35.09667913,"lng":129.03064731,"localRegular":true,"nameEn":"Busan Seafood Market Set","nameKo":"부산 해산물 시장 세트","onsitePriceKrw":70000,"priceKrw":52000,"rating":4.7,"reviewCount":511,"reviewEn":"Fresh seafood, no tourist markup.","reviewKo":"신선했고 관광객 바가지가 없었어요.","slug":"food-busan-seafood","subcategory":null,"supplierNameEn":"Busan Seafood Market Set","supplierNameKo":"부산 해산물 시장 세트","unit":"PERSON"},
-{"areaEn":"Jeju City Hall area, Jeju City","areaKo":"제주시청 인근 · 제주시","bookingCount":0,"category":"FOOD","city":"JEJU","isMeterTaxi":false,"isSample":false,"lat":33.4997202,"lng":126.5312573,"localRegular":true,"nameEn":"Jeju Black Pork Set","nameKo":"제주 흑돼지 세트","onsitePriceKrw":65000,"priceKrw":48000,"rating":4.8,"reviewCount":298,"reviewEn":"Famous black pork without the queue tricks.","reviewKo":"유명한 흑돼지를 줄 서는 꼼수 없이 먹었어요.","slug":"food-jeju-pork","subcategory":null,"supplierNameEn":"Jeju Black Pork Set","supplierNameKo":"제주 흑돼지 세트","unit":"PERSON"},
-{"areaEn":"Gwangjang Market, Jongno-gu","areaKo":"광장시장 · 종로구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.57005438,"lng":126.99972444,"localRegular":true,"nameEn":"Neighborhood Market & Alley Walk","nameKo":"동네 시장·골목 산책","onsitePriceKrw":50000,"priceKrw":35000,"rating":4.9,"reviewCount":1204,"reviewEn":"Groceries, snacks and slow alley walks — a normal local morning.","reviewKo":"장보기, 간식, 느린 골목 산책 — 평범한 동네의 아침이었어요.","slug":"exp-hanbok","subcategory":null,"supplierNameEn":"Neighborhood Market & Alley Walk","supplierNameKo":"동네 시장·골목 산책","unit":"PERSON"},
-{"areaEn":"Sehwa Beach, Gujwa-eup","areaKo":"세화해변 · 구좌읍","bookingCount":0,"category":"SIGHTSEEING","city":"JEJU","isMeterTaxi":false,"isSample":false,"lat":33.52520125,"lng":126.85998093,"localRegular":true,"nameEn":"Jeju Haenyeo Village Experience","nameKo":"제주 해녀 마을 체험","onsitePriceKrw":58000,"priceKrw":42000,"rating":4.9,"reviewCount":187,"reviewEn":"A rare, respectful look at haenyeo life.","reviewKo":"해녀의 삶을 가까이서 볼 수 있는 귀한 경험이었어요.","slug":"exp-haenyeo","subcategory":null,"supplierNameEn":"Jeju Haenyeo Village Experience","supplierNameKo":"제주 해녀 마을 체험","unit":"PERSON"},
-{"areaEn":"Gamcheon Culture Village, Saha-gu","areaKo":"감천문화마을 · 사하구","bookingCount":0,"category":"SIGHTSEEING","city":"BUSAN","isMeterTaxi":false,"isSample":false,"lat":35.09805635,"lng":129.00855011,"localRegular":true,"nameEn":"Busan Gamcheon Culture Tour","nameKo":"부산 감천 문화 투어","onsitePriceKrw":52000,"priceKrw":38000,"rating":4.8,"reviewCount":643,"reviewEn":"Colorful village, great local guide.","reviewKo":"알록달록한 마을과 좋은 현지 가이드였어요.","slug":"exp-gamcheon","subcategory":null,"supplierNameEn":"Busan Gamcheon Culture Tour","supplierNameKo":"부산 감천 문화 투어","unit":"PERSON"},
-{"areaEn":"Sangsu, Mapo-gu","areaKo":"상수 · 마포구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.54760618,"lng":126.92356673,"localRegular":true,"nameEn":"English-Speaking Hair Salon: Cut & Color","nameKo":"영어 가능 헤어살롱 커트·염색","onsitePriceKrw":120000,"priceKrw":85000,"rating":4.9,"reviewCount":428,"reviewEn":"English consultation, exactly the cut I showed.","reviewKo":"영어로 상담했고 보여준 사진 그대로 커트됐어요.","slug":"beauty-hair-cut-color","subcategory":"hair","supplierNameEn":"English-Speaking Hair Salon: Cut & Color","supplierNameKo":"영어 가능 헤어살롱 커트·염색","unit":"PERSON"},
-{"areaEn":"Gangnam Station, Gangnam-gu","areaKo":"강남역 · 강남구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.50024456,"lng":127.02685552,"localRegular":true,"nameEn":"K-Hair Perm & Styling Studio","nameKo":"K-헤어 펌·스타일링 스튜디오","onsitePriceKrw":150000,"priceKrw":110000,"rating":4.8,"reviewCount":265,"reviewEn":"Soft perm that suits my face shape, no upselling.","reviewKo":"얼굴형에 맞는 자연스러운 펌, 추가 권유가 없었어요.","slug":"beauty-hair-perm","subcategory":"hair","supplierNameEn":"K-Hair Perm & Styling Studio","supplierNameKo":"K-헤어 펌·스타일링 스튜디오","unit":"PERSON"},
-{"areaEn":"Myeongdong, Jung-gu","areaKo":"명동 · 중구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.56376444,"lng":126.98448713,"localRegular":false,"nameEn":"K-Makeup Studio: Daily Makeup","nameKo":"K-메이크업 스튜디오 데일리 메이크업","onsitePriceKrw":90000,"priceKrw":65000,"rating":4.9,"reviewCount":517,"reviewEn":"Natural K-style daily makeup, photo-ready.","reviewKo":"자연스러운 K-스타일 데일리 메이크업, 사진발이 좋았어요.","slug":"beauty-makeup-daily","subcategory":"makeup","supplierNameEn":"K-Makeup Studio: Daily Makeup","supplierNameKo":"K-메이크업 스튜디오 데일리 메이크업","unit":"PERSON"},
-{"areaEn":"Seongsu-dong, Seongdong-gu","areaKo":"성수동 · 성동구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.54456684,"lng":127.05596143,"localRegular":false,"nameEn":"Personal Color Makeup Session","nameKo":"퍼스널컬러 메이크업 세션","onsitePriceKrw":130000,"priceKrw":95000,"rating":4.9,"reviewCount":342,"reviewEn":"Found my colors and learned how to use them.","reviewKo":"내 컬러를 찾고 활용법까지 배울 수 있었어요.","slug":"beauty-makeup-personal-color","subcategory":"personalcolor","supplierNameEn":"Personal Color Makeup Session","supplierNameKo":"퍼스널컬러 메이크업 세션","unit":"PERSON"},
-{"areaEn":"Apgujeong Rodeo, Gangnam-gu","areaKo":"압구정로데오 · 강남구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.52740447,"lng":127.04057695,"localRegular":false,"nameEn":"Esthetic Skin Care: Glow Facial","nameKo":"에스테틱 글로우 페이셜","onsitePriceKrw":120000,"priceKrw":89000,"rating":4.8,"reviewCount":214,"reviewEn":"Gentle esthetic facial care, no medical devices, no pressure to add treatments.","reviewKo":"의료기기 없는 순수 에스테틱 관리, 추가 시술 권유가 없었어요.","slug":"beauty-esthetic-glow","subcategory":"esthetic","supplierNameEn":"Esthetic Skin Care: Glow Facial","supplierNameKo":"에스테틱 글로우 페이셜","unit":"PERSON"},
-{"areaEn":"Seochon, Jongno-gu","areaKo":"서촌 · 종로구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.57919471,"lng":126.97139123,"localRegular":false,"nameEn":"Esthetic Head Spa & Scalp Care","nameKo":"에스테틱 헤드스파·두피 케어","onsitePriceKrw":95000,"priceKrw":69000,"rating":4.9,"reviewCount":167,"reviewEn":"A quiet head spa Koreans book after long work weeks.","reviewKo":"긴 한 주를 보낸 뒤 한국인들이 예약하는 조용한 헤드스파였어요.","slug":"beauty-esthetic-headspa","subcategory":"esthetic","supplierNameEn":"Esthetic Head Spa & Scalp Care","supplierNameKo":"에스테틱 헤드스파·두피 케어","unit":"PERSON"},
-{"areaEn":"Euljiro, Jung-gu","areaKo":"을지로 · 중구","bookingCount":0,"category":"PUB","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.56628097,"lng":126.99103731,"localRegular":true,"nameEn":"Euljiro Outdoor Pocha Night","nameKo":"을지로 야장 포차","onsitePriceKrw":45000,"priceKrw":32000,"rating":4.8,"reviewCount":386,"reviewEn":"Plastic stools, grilled snacks, the full Euljiro night.","reviewKo":"플라스틱 의자와 구운 안주, 을지로의 밤 그대로였어요.","slug":"pub-euljiro-pocha","subcategory":null,"supplierNameEn":"Euljiro Outdoor Pocha Night","supplierNameKo":"을지로 야장 포차","unit":"PERSON"},
-{"areaEn":"Seogyo-dong, Mapo-gu","areaKo":"서교동 · 마포구","bookingCount":0,"category":"KBEAUTY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.55343108,"lng":126.91266228,"localRegular":false,"nameEn":"K-Nail Studio: Gel Nail Art","nameKo":"K-네일 스튜디오 젤 네일아트","onsitePriceKrw":80000,"priceKrw":55000,"rating":4.8,"reviewCount":293,"reviewEn":"Seasonal Korean nail art, priced by design before we started.","reviewKo":"계절감 있는 한국식 네일아트, 시작 전에 디자인별 가격이 정해졌어요.","slug":"beauty-nail-gel","subcategory":"nail","supplierNameEn":"K-Nail Studio: Gel Nail Art","supplierNameKo":"K-네일 스튜디오 젤 네일아트","unit":"PERSON"},
-{"areaEn":"Mangwon-dong, Mapo-gu","areaKo":"망원동 · 마포구","bookingCount":0,"category":"PUB","city":"SEOUL","isMeterTaxi":false,"isSample":false,"lat":37.55754238,"lng":126.90875378,"localRegular":true,"nameEn":"Neighborhood Hof: Chicken & Draft Beer Set","nameKo":"동네 호프 치킨·생맥주 세트","onsitePriceKrw":38000,"priceKrw":28000,"rating":4.7,"reviewCount":254,"reviewEn":"The corner hof everyone in the block actually goes to.","reviewKo":"동네 사람들이 실제로 가는 그 호프집이었어요.","slug":"pub-hof-chicken","subcategory":null,"supplierNameEn":"Neighborhood Hof: Chicken & Draft Beer Set","supplierNameKo":"동네 호프 치킨·생맥주 세트","unit":"PERSON"},
-{"areaEn":"Seomyeon, Busanjin-gu","areaKo":"서면 · 부산진구","bookingCount":0,"category":"PUB","city":"BUSAN","isMeterTaxi":false,"isSample":false,"lat":35.15779726,"lng":129.05989495,"localRegular":true,"nameEn":"Busan Makgeolli & Pajeon House","nameKo":"부산 막걸리·파전 집","onsitePriceKrw":42000,"priceKrw":30000,"rating":4.8,"reviewCount":173,"reviewEn":"Rainy-day makgeolli and pajeon, ordered the local way.","reviewKo":"비 오는 날 막걸리와 파전, 현지 방식 그대로 주문했어요.","slug":"pub-busan-makgeolli","subcategory":null,"supplierNameEn":"Busan Makgeolli & Pajeon House","supplierNameKo":"부산 막걸리·파전 집","unit":"PERSON"},
-{"areaEn":"Hapjeong, Mapo-gu","areaKo":"합정 · 마포구","bookingCount":0,"category":"KPOP","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.55016346,"lng":126.91510326,"localRegular":false,"nameEn":"K-POP Dance Class: Learn a Chorus","nameKo":"K-POP 댄스 체험: 후렴 안무 배우기","onsitePriceKrw":65000,"priceKrw":45000,"rating":4.9,"reviewCount":508,"reviewEn":"Learned the full chorus choreography in one session, filmed at the end.","reviewKo":"한 세션에 후렴 안무를 다 배우고 마지막에 영상까지 찍었어요.","slug":"kpop-dance-class","subcategory":"dance","supplierNameEn":"K-POP Dance Class: Learn a Chorus","supplierNameKo":"K-POP 댄스 체험: 후렴 안무 배우기","unit":"PERSON"},
-{"areaEn":"Cheongdam-dong, Gangnam-gu","areaKo":"청담동 · 강남구","bookingCount":0,"category":"KPOP","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.51912132,"lng":127.05193312,"localRegular":false,"nameEn":"Big-4 Agency Headquarters Visit","nameKo":"국내 4대 기획사 본사 방문 체험","onsitePriceKrw":85000,"priceKrw":60000,"rating":4.7,"reviewCount":231,"reviewEn":"Guided visit around the big four agency buildings and their fan-favorite photo spots.","reviewKo":"4대 기획사 건물과 팬들이 찾는 포토 스팟을 가이드와 함께 돌았어요.","slug":"kpop-agency-visit","subcategory":"agency","supplierNameEn":"Big-4 Agency Headquarters Visit","supplierNameKo":"국내 4대 기획사 본사 방문 체험","unit":"PERSON"},
-{"areaEn":"Samcheong-dong, Jongno-gu","areaKo":"삼청동 · 종로구","bookingCount":0,"category":"KDRAMA","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.58379887,"lng":126.98191687,"localRegular":false,"nameEn":"K-Drama Filming Locations Tour: Seoul","nameKo":"K-드라마 촬영지 투어: 서울","onsitePriceKrw":75000,"priceKrw":52000,"rating":4.8,"reviewCount":342,"reviewEn":"Iconic drama scenes matched to the real alleys and cafes where they were shot.","reviewKo":"유명한 드라마 장면과 실제 촬영된 골목·카페를 맞춰 보는 투어였어요.","slug":"kdrama-seoul-locations","subcategory":"filming","supplierNameEn":"K-Drama Filming Locations Tour: Seoul","supplierNameKo":"K-드라마 촬영지 투어: 서울","unit":"PERSON"},
-{"areaEn":"Aewol, Jeju City","areaKo":"애월 · 제주시","bookingCount":0,"category":"KDRAMA","city":"JEJU","isMeterTaxi":false,"isSample":true,"lat":33.45912599,"lng":126.31037606,"localRegular":false,"nameEn":"K-Drama Filming Locations Tour: Jeju","nameKo":"K-드라마 촬영지 투어: 제주","onsitePriceKrw":82000,"priceKrw":58000,"rating":4.9,"reviewCount":176,"reviewEn":"Seaside cafes and oreum hills from the dramas, in one slow day route.","reviewKo":"드라마 속 바닷가 카페와 오름을 하루 코스로 천천히 돌았어요.","slug":"kdrama-jeju-locations","subcategory":"filming","supplierNameEn":"K-Drama Filming Locations Tour: Jeju","supplierNameKo":"K-드라마 촬영지 투어: 제주","unit":"PERSON"},
-{"areaEn":"Itaewon, Yongsan-gu","areaKo":"이태원 · 용산구","bookingCount":0,"category":"DELIVERY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.53433119,"lng":126.99572678,"localRegular":false,"nameEn":"Late-Night Chicken Delivery to Your Stay","nameKo":"숙소로 오는 야식 치킨 딜리버리","onsitePriceKrw":42000,"priceKrw":32000,"rating":4.8,"reviewCount":864,"reviewEn":"Ordered from the stay, arrived hot with the same menu price as the app Koreans use.","reviewKo":"숙소에서 주문했고 한국인이 쓰는 앱과 같은 메뉴 가격에 뜨겁게 도착했어요.","slug":"delivery-chicken-night","subcategory":null,"supplierNameEn":"Late-Night Chicken Delivery to Your Stay","supplierNameKo":"숙소로 오는 야식 치킨 딜리버리","unit":"PERSON"},
-{"areaEn":"Yeouido, Yeongdeungpo-gu","areaKo":"여의도 · 영등포구","bookingCount":0,"category":"DELIVERY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.52065263,"lng":126.92488606,"localRegular":false,"nameEn":"Bunsik Delivery Set: Tteokbokki & Gimbap","nameKo":"분식 딜리버리 세트: 떡볶이·김밥","onsitePriceKrw":33000,"priceKrw":24000,"rating":4.7,"reviewCount":529,"reviewEn":"The neighborhood snack set office workers order, delivered to the hotel desk.","reviewKo":"직장인들이 시키는 동네 분식 세트를 호텔 데스크까지 배달받았어요.","slug":"delivery-bunsik-set","subcategory":null,"supplierNameEn":"Bunsik Delivery Set: Tteokbokki & Gimbap","supplierNameKo":"분식 딜리버리 세트: 떡볶이·김밥","unit":"PERSON"},
-{"areaEn":"Yeonnam-dong, Mapo-gu","areaKo":"연남동 · 마포구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.56517198,"lng":126.9171772,"localRegular":false,"nameEn":"Neighborhood Cafe & Dessert Stop","nameKo":"동네 카페·디저트","onsitePriceKrw":18000,"priceKrw":12000,"rating":4.7,"reviewCount":689,"reviewEn":"The corner cafe office workers and students actually live in — same menu board, same prices.","reviewKo":"직장인과 학생들이 실제로 살아가는 동네 카페 — 같은 메뉴판, 같은 가격이었어요.","slug":"daily-cafe","subcategory":null,"supplierNameEn":"Neighborhood Cafe & Dessert Stop","supplierNameKo":"동네 카페·디저트","unit":"PERSON"},
-{"areaEn":"Dongdaemun, Jung-gu","areaKo":"동대문 · 중구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.5646568,"lng":127.00566471,"localRegular":false,"nameEn":"Neighborhood Sauna & Jjimjilbang Day Pass","nameKo":"동네 사우나·찜질방 하루 이용권","onsitePriceKrw":22000,"priceKrw":15000,"rating":4.8,"reviewCount":512,"reviewEn":"Lockers, baths and the jjimjilbang resting hall — a completely ordinary Korean weekend reset.","reviewKo":"락커, 탕, 찜질방 휴게실까지 — 평범한 한국인의 주말 리셋이었어요.","slug":"daily-sauna","subcategory":null,"supplierNameEn":"Neighborhood Sauna & Jjimjilbang Day Pass","supplierNameKo":"동네 사우나·찜질방 하루 이용권","unit":"PERSON"},
-{"areaEn":"Daehangno, Jongno-gu","areaKo":"대학로 · 종로구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.5821589,"lng":127.00189204,"localRegular":false,"nameEn":"Neighborhood PC Bang: 3-Hour Pass","nameKo":"동네 PC방 3시간 이용권","onsitePriceKrw":9000,"priceKrw":6000,"rating":4.6,"reviewCount":438,"reviewEn":"High-end rigs, ramyeon ordered to your seat — the PC bang exactly as local gamers use it.","reviewKo":"고사양 자리, 자리로 배달되는 라면 — 동네 게이머들이 쓰는 그대로의 PC방이었어요.","slug":"daily-pc-bang","subcategory":null,"supplierNameEn":"Neighborhood PC Bang: 3-Hour Pass","supplierNameKo":"동네 PC방 3시간 이용권","unit":"PERSON"},
-{"areaEn":"Sinchon, Seodaemun-gu","areaKo":"신촌 · 서대문구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.55507463,"lng":126.93658449,"localRegular":false,"nameEn":"Coin Karaoke Booth: Per Song","nameKo":"동네 코인노래방 (1곡 500원)","onsitePriceKrw":500,"priceKrw":500,"rating":4.7,"reviewCount":764,"reviewEn":"A coin karaoke booth by the station — ₩500 per song, just like everyone else here. Book as many songs as you want: 10 songs, ₩5,000.","reviewKo":"역 앞 코인노래방 — 1곡 500원, 동네 사람들과 똑같아요. 원하는 곡 수만큼 예약하세요: 10곡이면 5,000원.","slug":"daily-karaoke","subcategory":null,"supplierNameEn":"Coin Karaoke Booth: Per Song","supplierNameKo":"동네 코인노래방 (1곡 500원)","unit":"SONG"},
-{"areaEn":"Namdaemun, Jung-gu","areaKo":"남대문 · 중구","bookingCount":0,"category":"EYEWEAR","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.56366692,"lng":126.98056194,"localRegular":false,"nameEn":"Vision Check & Custom Glasses Consultation — Store Visit","nameKo":"시력검사 + 맞춤 안경 상담 (매장 방문 예약)","onsitePriceKrw":35000,"priceKrw":25000,"rating":4.8,"reviewCount":214,"reviewEn":"Booked the visit online, then everything happened at the shop: eye check, consultation, and choosing my glasses with the optician.","reviewKo":"온라인으로는 방문 예약만 했고, 시력검사·상담·안경 선택은 전부 매장에서 안경사와 함께 진행됐어요.","slug":"eyewear-vision-check","subcategory":null,"supplierNameEn":"Vision Check & Custom Glasses Consultation — Store Visit","supplierNameKo":"시력검사 + 맞춤 안경 상담 (매장 방문 예약)","unit":"PERSON"},
-{"areaEn":"Garosu-gil, Gangnam-gu","areaKo":"가로수길 · 강남구","bookingCount":0,"category":"EYEWEAR","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.5179257,"lng":127.02336635,"localRegular":false,"nameEn":"Frame Fitting Experience — Store Visit","nameKo":"안경테 피팅 체험 (매장 방문 예약)","onsitePriceKrw":25000,"priceKrw":15000,"rating":4.7,"reviewCount":156,"reviewEn":"Tried on dozens of frames at the shop and got them fitted to my face. No glasses are sold online here — the visit is the whole point.","reviewKo":"매장에서 수십 개 안경테를 직접 써보고 얼굴에 맞게 피팅받았어요. 온라인으로 안경을 파는 곳이 아니라 방문이 핵심인 곳이에요.","slug":"eyewear-frame-fitting","subcategory":null,"supplierNameEn":"Frame Fitting Experience — Store Visit","supplierNameKo":"안경테 피팅 체험 (매장 방문 예약)","unit":"PERSON"},
-{"areaEn":"Guro Digital Complex, Guro-gu","areaKo":"구로디지털단지 · 구로구","bookingCount":0,"category":"JOBS","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.48522662,"lng":126.90159422,"localRegular":false,"nameEn":"Professional Job-Seeker Consultation — Booking","nameKo":"전문인력 구직 상담 예약","onsitePriceKrw":45000,"priceKrw":30000,"rating":4.8,"reviewCount":96,"reviewEn":"A consultation booking only: the registered agency checked my E-7 eligibility and work history first, and explained exactly which roles I could be matched with. No placement was promised on the spot.","reviewKo":"상담 예약 전용이었어요: 등록된 소개사업자가 먼저 E-7 자격과 경력을 확인하고, 매칭 가능한 직무 범위를 정확히 설명해 줬습니다. 현장에서 취업을 보장하지는 않았어요.","slug":"jobs-pro-consult","subcategory":null,"supplierNameEn":"Professional Job-Seeker Consultation — Booking","supplierNameKo":"전문인력 구직 상담 예약","unit":"PERSON"},
-{"areaEn":"Daerim, Yeongdeungpo-gu","areaKo":"대림 · 영등포구","bookingCount":0,"category":"JOBS","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.4943706,"lng":126.89495181,"localRegular":false,"nameEn":"Work-Eligible Status Matching Consultation","nameKo":"취업 가능 체류자격 구직자 매칭 상담","onsitePriceKrw":55000,"priceKrw":40000,"rating":4.9,"reviewCount":73,"reviewEn":"With an F-5 status I could use the matching consultation. They confirmed my residence status allows employment first, then walked through openings step by step — Bapsang only booked the appointment.","reviewKo":"F-5 자격이라 매칭 상담을 이용할 수 있었어요. 먼저 취업 가능한 체류자격인지 확인한 뒤 공고를 단계별로 살펴봤고, Bapsang는 예약만 중개했습니다.","slug":"jobs-matching-consult","subcategory":null,"supplierNameEn":"Work-Eligible Status Matching Consultation","supplierNameKo":"취업 가능 체류자격 구직자 매칭 상담","unit":"PERSON"},
-{"areaEn":"Sillim, Gwanak-gu","areaKo":"신림 · 관악구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.48522112,"lng":126.92970351,"localRegular":false,"nameEn":"Neighborhood Manhwa Cafe: 2-Hour Pass (1 Drink Included)","nameKo":"동네 만화카페 시간제 이용 (2시간 · 음료 1잔 포함)","onsitePriceKrw":9000,"priceKrw":6000,"rating":4.7,"reviewCount":356,"reviewEn":"Two hours in a cozy comic-book room with one drink included — the manhwa cafe exactly as neighborhood students use it, same time-based price.","reviewKo":"아늑한 만화방에서 음료 1잔 포함 2시간 — 동네 학생들이 쓰는 그대로의 만화카페, 같은 시간제 가격이었어요.","slug":"daily-manhwa-cafe","subcategory":null,"supplierNameEn":"Neighborhood Manhwa Cafe: 2-Hour Pass (1 Drink Included)","supplierNameKo":"동네 만화카페 시간제 이용 (2시간 · 음료 1잔 포함)","unit":"PERSON"},
-{"areaEn":"Ikseon-dong, Jongno-gu","areaKo":"익선동 · 종로구","bookingCount":0,"category":"DAILY","city":"SEOUL","isMeterTaxi":false,"isSample":true,"lat":37.57293519,"lng":126.98959071,"localRegular":false,"nameEn":"Four-Cut Photo Booth Session (2 Prints)","nameKo":"인생네컷 포토부스 촬영 (4컷 촬영 + 인화 2장)","onsitePriceKrw":7000,"priceKrw":5000,"rating":4.8,"reviewCount":612,"reviewEn":"Four cuts, two prints, props on the wall — the photo booth ritual every Korean friend group does, at the same walk-in price.","reviewKo":"4컷 촬영에 인화 2장, 벽에 걸린 소품까지 — 한국 친구 그룹이 다 하는 포토부스 그대로, 같은 현장 가격이었어요.","slug":"daily-photo-booth","subcategory":null,"supplierNameEn":"Four-Cut Photo Booth Session (2 Prints)","supplierNameKo":"인생네컷 포토부스 촬영 (4컷 촬영 + 인화 2장)","unit":"PERSON"}
-],
-"stayAvailability":[
-{"bookedRooms":0,"date":"2026-11-05","productSlug":"stay-hanok","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-06","productSlug":"stay-hanok","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-07","productSlug":"stay-hanok","remaining":5,"totalRooms":5},{"bookedRooms":0,"date":"2026-11-08","productSlug":"stay-hanok","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-09","productSlug":"stay-hanok","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-10","productSlug":"stay-hanok","remaining":5,"totalRooms":5},{"bookedRooms":0,"date":"2026-11-11","productSlug":"stay-hanok","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-12","productSlug":"stay-hanok","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-13","productSlug":"stay-hanok","remaining":5,"totalRooms":5},{"bookedRooms":0,"date":"2026-11-14","productSlug":"stay-hanok","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-15","productSlug":"stay-hanok","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-16","productSlug":"stay-hanok","remaining":5,"totalRooms":5},{"bookedRooms":0,"date":"2026-11-17","productSlug":"stay-hanok","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-18","productSlug":"stay-hanok","remaining":4,"totalRooms":4},
-{"bookedRooms":0,"date":"2026-11-05","productSlug":"stay-jeju-stone","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-06","productSlug":"stay-jeju-stone","remaining":2,"totalRooms":2},{"bookedRooms":0,"date":"2026-11-07","productSlug":"stay-jeju-stone","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-08","productSlug":"stay-jeju-stone","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-09","productSlug":"stay-jeju-stone","remaining":2,"totalRooms":2},{"bookedRooms":0,"date":"2026-11-10","productSlug":"stay-jeju-stone","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-11","productSlug":"stay-jeju-stone","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-12","productSlug":"stay-jeju-stone","remaining":2,"totalRooms":2},{"bookedRooms":0,"date":"2026-11-13","productSlug":"stay-jeju-stone","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-14","productSlug":"stay-jeju-stone","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-15","productSlug":"stay-jeju-stone","remaining":2,"totalRooms":2},{"bookedRooms":0,"date":"2026-11-16","productSlug":"stay-jeju-stone","remaining":3,"totalRooms":3},{"bookedRooms":0,"date":"2026-11-17","productSlug":"stay-jeju-stone","remaining":4,"totalRooms":4},{"bookedRooms":0,"date":"2026-11-18","productSlug":"stay-jeju-stone","remaining":2,"totalRooms":2},
-{"bookedRooms":0,"date":"2026-11-05","productSlug":"stay-busan-harbor","remaining":12,"totalRooms":12},{"bookedRooms":0,"date":"2026-11-06","productSlug":"stay-busan-harbor","remaining":13,"totalRooms":13},{"bookedRooms":0,"date":"2026-11-07","productSlug":"stay-busan-harbor","remaining":11,"totalRooms":11},{"bookedRooms":0,"date":"2026-11-08","productSlug":"stay-busan-harbor","remaining":12,"totalRooms":12},{"bookedRooms":0,"date":"2026-11-09","productSlug":"stay-busan-harbor","remaining":13,"totalRooms":13},{"bookedRooms":0,"date":"2026-11-10","productSlug":"stay-busan-harbor","remaining":11,"totalRooms":11},{"bookedRooms":0,"date":"2026-11-11","productSlug":"stay-busan-harbor","remaining":12,"totalRooms":12},{"bookedRooms":0,"date":"2026-11-12","productSlug":"stay-busan-harbor","remaining":13,"totalRooms":13},{"bookedRooms":0,"date":"2026-11-13","productSlug":"stay-busan-harbor","remaining":11,"totalRooms":11},{"bookedRooms":0,"date":"2026-11-14","productSlug":"stay-busan-harbor","remaining":12,"totalRooms":12},{"bookedRooms":0,"date":"2026-11-15","productSlug":"stay-busan-harbor","remaining":13,"totalRooms":13},{"bookedRooms":0,"date":"2026-11-16","productSlug":"stay-busan-harbor","remaining":11,"totalRooms":11},{"bookedRooms":0,"date":"2026-11-17","productSlug":"stay-busan-harbor","remaining":12,"totalRooms":12},{"bookedRooms":0,"date":"2026-11-18","productSlug":"stay-busan-harbor","remaining":13,"totalRooms":13}
-],"today":"2026-11-05"}
+{
+  "fareRoutes": [
+    {
+      "distanceKm": 58,
+      "id": "icn-hongdae",
+      "minutes": 70,
+      "nameEn": "Incheon Airport → Hongdae",
+      "nameKo": "인천공항 → 홍대",
+      "tollKrw": 6500
+    },
+    {
+      "distanceKm": 3.5,
+      "id": "seoulstation-gyeongbokgung",
+      "minutes": 15,
+      "nameEn": "Seoul Station → Gyeongbokgung",
+      "nameKo": "서울역 → 경복궁",
+      "tollKrw": 0
+    },
+    {
+      "distanceKm": 12,
+      "id": "busanstation-haeundae",
+      "minutes": 25,
+      "nameEn": "Busan Station → Haeundae",
+      "nameKo": "부산역 → 해운대",
+      "tollKrw": 0
+    },
+    {
+      "distanceKm": 45,
+      "id": "jejuairport-seogwipo",
+      "minutes": 55,
+      "nameEn": "Jeju Airport → Seogwipo",
+      "nameKo": "제주공항 → 서귀포",
+      "tollKrw": 0
+    }
+  ],
+  "krwPerUsd": 1350,
+  "packages": [],
+  "products": [
+    {
+      "areaEn": "Bukchon, Jongno-gu",
+      "areaKo": "북촌 · 종로구",
+      "bookingCount": 0,
+      "category": "STAY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.58147826,
+      "lng": 126.98495294,
+      "localRegular": true,
+      "nameEn": "Hanok Stay in Bukchon",
+      "nameKo": "북촌 한옥 스테이",
+      "onsitePriceKrw": 190000,
+      "priceKrw": 145000,
+      "rating": 4.9,
+      "reviewCount": 312,
+      "reviewEn": "Sleeping in a real hanok was unforgettable.",
+      "reviewKo": "진짜 한옥에서 자는 경험이 잊을 수 없었어요.",
+      "slug": "stay-hanok",
+      "subcategory": null,
+      "supplierNameEn": "Hanok Stay in Bukchon",
+      "supplierNameKo": "북촌 한옥 스테이",
+      "unit": "NIGHT",
+      "images": [
+        "https://images.pexels.com/photos/11932052/pexels-photo-11932052.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy",
+        "https://images.pexels.com/photos/19271527/pexels-photo-19271527.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+        "https://images.pexels.com/photos/34548652/pexels-photo-34548652.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy"
+      ],
+      "hoursKo": "체크인 15:00 · 체크아웃 11:00",
+      "hoursEn": "Check-in 15:00 · Check-out 11:00",
+      "includedKo": [
+        "객실 1박",
+        "무료 Wi-Fi",
+        "체크인 시 웰컴 드링크"
+      ],
+      "includedEn": [
+        "1-night stay",
+        "Free Wi-Fi",
+        "Welcome drink at check-in"
+      ],
+      "howToKo": [
+        "예약 코드와 방문 코드를 체크인 시 제시하세요",
+        "체크인 15:00 이후, 체크아웃 11:00 이전"
+      ],
+      "howToEn": [
+        "Show your booking code and visit code at check-in",
+        "Check-in from 15:00, check-out by 11:00"
+      ],
+      "notesKo": [
+        "현장 상황에 따라 객실 배정이 달라질 수 있어요",
+        "추가 인원·조식은 현장에서 문의하세요"
+      ],
+      "notesEn": [
+        "Room assignment may vary on site",
+        "Ask on site about extra guests or breakfast"
+      ]
+    },
+    {
+      "areaEn": "Seogwipo",
+      "areaKo": "서귀포",
+      "bookingCount": 0,
+      "category": "STAY",
+      "city": "JEJU",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 33.28237013,
+      "lng": 126.53501171,
+      "localRegular": true,
+      "nameEn": "Jeju Stone House",
+      "nameKo": "제주 돌집",
+      "onsitePriceKrw": 210000,
+      "priceKrw": 168000,
+      "rating": 4.8,
+      "reviewCount": 208,
+      "reviewEn": "Quiet stone house, ten minutes from the sea.",
+      "reviewKo": "바다에서 10분 거리, 조용한 돌집이었어요.",
+      "slug": "stay-jeju-stone",
+      "subcategory": null,
+      "supplierNameEn": "Jeju Stone House",
+      "supplierNameKo": "제주 돌집",
+      "unit": "NIGHT",
+      "images": [
+        "https://images.pexels.com/photos/2763872/pexels-photo-2763872.jpeg",
+        "https://images.pexels.com/photos/18023159/pexels-photo-18023159/free-photo-of-stone-wall-in-front-of-a-village-house-with-a-thatched-roof.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/18023250/pexels-photo-18023250.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+      ],
+      "hoursKo": "체크인 15:00 · 체크아웃 11:00",
+      "hoursEn": "Check-in 15:00 · Check-out 11:00",
+      "includedKo": [
+        "객실 1박",
+        "무료 Wi-Fi",
+        "체크인 시 웰컴 드링크"
+      ],
+      "includedEn": [
+        "1-night stay",
+        "Free Wi-Fi",
+        "Welcome drink at check-in"
+      ],
+      "howToKo": [
+        "예약 코드와 방문 코드를 체크인 시 제시하세요",
+        "체크인 15:00 이후, 체크아웃 11:00 이전"
+      ],
+      "howToEn": [
+        "Show your booking code and visit code at check-in",
+        "Check-in from 15:00, check-out by 11:00"
+      ],
+      "notesKo": [
+        "현장 상황에 따라 객실 배정이 달라질 수 있어요",
+        "추가 인원·조식은 현장에서 문의하세요"
+      ],
+      "notesEn": [
+        "Room assignment may vary on site",
+        "Ask on site about extra guests or breakfast"
+      ]
+    },
+    {
+      "areaEn": "Busan Station, Jung-gu",
+      "areaKo": "부산역 · 중구",
+      "bookingCount": 0,
+      "category": "STAY",
+      "city": "BUSAN",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 35.11571662,
+      "lng": 129.04282303,
+      "localRegular": true,
+      "nameEn": "Busan Harbor View Hotel",
+      "nameKo": "부산 하버뷰 호텔",
+      "onsitePriceKrw": 160000,
+      "priceKrw": 128000,
+      "rating": 4.7,
+      "reviewCount": 421,
+      "reviewEn": "Great harbor view and easy subway access.",
+      "reviewKo": "항구 전망이 좋고 지하철 접근이 쉬웠어요.",
+      "slug": "stay-busan-harbor",
+      "subcategory": null,
+      "supplierNameEn": "Busan Harbor View Hotel",
+      "supplierNameKo": "부산 하버뷰 호텔",
+      "unit": "NIGHT",
+      "images": [
+        "https://images.pexels.com/photos/15775943/pexels-photo-15775943/free-photo-of-haeundae-beach-busan.jpeg?w=600",
+        "https://images.pexels.com/photos/32536912/pexels-photo-32536912/free-photo-of-busan-gwangan-bridge-at-twilight-sunset-view.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/11932029/pexels-photo-11932029.jpeg?auto=compress&w=600"
+      ],
+      "hoursKo": "체크인 15:00 · 체크아웃 11:00",
+      "hoursEn": "Check-in 15:00 · Check-out 11:00",
+      "includedKo": [
+        "객실 1박",
+        "무료 Wi-Fi",
+        "체크인 시 웰컴 드링크"
+      ],
+      "includedEn": [
+        "1-night stay",
+        "Free Wi-Fi",
+        "Welcome drink at check-in"
+      ],
+      "howToKo": [
+        "예약 코드와 방문 코드를 체크인 시 제시하세요",
+        "체크인 15:00 이후, 체크아웃 11:00 이전"
+      ],
+      "howToEn": [
+        "Show your booking code and visit code at check-in",
+        "Check-in from 15:00, check-out by 11:00"
+      ],
+      "notesKo": [
+        "현장 상황에 따라 객실 배정이 달라질 수 있어요",
+        "추가 인원·조식은 현장에서 문의하세요"
+      ],
+      "notesEn": [
+        "Room assignment may vary on site",
+        "Ask on site about extra guests or breakfast"
+      ]
+    },
+    {
+      "areaEn": "Hongdae, Mapo-gu",
+      "areaKo": "홍대 · 마포구",
+      "bookingCount": 0,
+      "category": "RIDE",
+      "city": "SEOUL",
+      "isMeterTaxi": true,
+      "isSample": false,
+      "lat": 37.55744241,
+      "lng": 126.92439689,
+      "localRegular": false,
+      "nameEn": "Incheon Airport → Hongdae Meter Taxi",
+      "nameKo": "인천공항 → 홍대 미터 택시",
+      "onsitePriceKrw": 85000,
+      "priceKrw": 58000,
+      "rating": 4.9,
+      "reviewCount": 1054,
+      "reviewEn": "Driver used the meter, no extra cash asked.",
+      "reviewKo": "미터기로 운행했고 현장 추가 요금이 없었어요.",
+      "slug": "ride-icn-hongdae",
+      "subcategory": null,
+      "supplierNameEn": "Incheon Airport → Hongdae Meter Taxi",
+      "supplierNameKo": "인천공항 → 홍대 미터 택시",
+      "unit": "RIDE",
+      "images": [
+        "https://postfiles.pstatic.net/MjAyMzEyMTFfMTEg/MDAxNzAyMjUzOTEzOTI5.ns5dS5jduGnOoNUkn8Kd8EKap2pojlMri9DhwEMtCzog.8euKE8HYoxFnNhb9c8r_iA-oJ6okGI5fUkIE6dCjv3wg.JPEG.duliebear/SE-56977394-49E8-41A5-B90D-89B2830ADF70.jpg?type=w966",
+        "https://images.pexels.com/photos/13960604/pexels-photo-13960604.png?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/34569846/pexels-photo-34569846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      "hoursKo": "24시간",
+      "hoursEn": "24 hours",
+      "includedKo": [
+        "차량 1대 (상품 설명 참조)",
+        "기사 포함"
+      ],
+      "includedEn": [
+        "One vehicle (see description)",
+        "Driver included"
+      ],
+      "howToKo": [
+        "예약 시간에 출발지에서 만나요",
+        "예약 코드를 기사에게 보여주세요"
+      ],
+      "howToEn": [
+        "Meet at your pickup point at the booked time",
+        "Show your booking code to the driver"
+      ],
+      "notesKo": [
+        "교통 상황에 따라 소요 시간이 달라질 수 있어요",
+        "택시는 미터기 요금이 적용돼요"
+      ],
+      "notesEn": [
+        "Travel time may vary with traffic",
+        "Taxis charge the meter fare"
+      ]
+    },
+    {
+      "areaEn": "Gwanghwamun, Jongno-gu",
+      "areaKo": "광화문 · 종로구",
+      "bookingCount": 0,
+      "category": "RIDE",
+      "city": "SEOUL",
+      "isMeterTaxi": true,
+      "isSample": false,
+      "lat": 37.57202217,
+      "lng": 126.97683236,
+      "localRegular": false,
+      "nameEn": "Seoul Night City Meter Taxi Tour",
+      "nameKo": "서울 야간 미터 택시 투어",
+      "onsitePriceKrw": 98000,
+      "priceKrw": 72000,
+      "rating": 4.8,
+      "reviewCount": 366,
+      "reviewEn": "Night views without worrying about the fare.",
+      "reviewKo": "요금 걱정 없이 야경을 즐길 수 있었어요.",
+      "slug": "ride-seoul-night",
+      "subcategory": null,
+      "supplierNameEn": "Seoul Night City Meter Taxi Tour",
+      "supplierNameKo": "서울 야간 미터 택시 투어",
+      "unit": "RIDE",
+      "images": [
+        "https://images.pexels.com/photos/2246806/pexels-photo-2246806.jpeg?auto=compress&w=1600",
+        "https://images.pexels.com/photos/18495176/pexels-photo-18495176.jpeg?auto=compress&cs=tinysrgb&w=750",
+        "https://images.pexels.com/photos/15375761/pexels-photo-15375761.jpeg?auto=compress&cs=tinysrgb&w=600"
+      ],
+      "hoursKo": "24시간",
+      "hoursEn": "24 hours",
+      "includedKo": [
+        "차량 1대 (상품 설명 참조)",
+        "기사 포함"
+      ],
+      "includedEn": [
+        "One vehicle (see description)",
+        "Driver included"
+      ],
+      "howToKo": [
+        "예약 시간에 출발지에서 만나요",
+        "예약 코드를 기사에게 보여주세요"
+      ],
+      "howToEn": [
+        "Meet at your pickup point at the booked time",
+        "Show your booking code to the driver"
+      ],
+      "notesKo": [
+        "교통 상황에 따라 소요 시간이 달라질 수 있어요",
+        "택시는 미터기 요금이 적용돼요"
+      ],
+      "notesEn": [
+        "Travel time may vary with traffic",
+        "Taxis charge the meter fare"
+      ]
+    },
+    {
+      "areaEn": "Jeju Airport, Jeju City",
+      "areaKo": "제주공항 · 제주시",
+      "bookingCount": 0,
+      "category": "RIDE",
+      "city": "JEJU",
+      "isMeterTaxi": true,
+      "isSample": false,
+      "lat": 33.50710455,
+      "lng": 126.49312402,
+      "localRegular": false,
+      "nameEn": "Jeju Island Day Meter Taxi",
+      "nameKo": "제주 하루 미터 택시",
+      "onsitePriceKrw": 180000,
+      "priceKrw": 135000,
+      "rating": 4.9,
+      "reviewCount": 289,
+      "reviewEn": "One driver for the whole island day, metered.",
+      "reviewKo": "하루 종일 같은 기사님, 미터 요금이었어요.",
+      "slug": "ride-jeju-day",
+      "subcategory": null,
+      "supplierNameEn": "Jeju Island Day Meter Taxi",
+      "supplierNameKo": "제주 하루 미터 택시",
+      "unit": "RIDE",
+      "images": [
+        "https://images.pexels.com/photos/15769389/pexels-photo-15769389/free-photo-of-a-car-driving-along-a-road-next-to-the-ocean.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/1590191/pexels-photo-1590191.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/37581691/pexels-photo-37581691/free-photo-of-scenic-coastal-highway-drive-with-ocean-view.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy"
+      ],
+      "hoursKo": "24시간",
+      "hoursEn": "24 hours",
+      "includedKo": [
+        "차량 1대 (상품 설명 참조)",
+        "기사 포함"
+      ],
+      "includedEn": [
+        "One vehicle (see description)",
+        "Driver included"
+      ],
+      "howToKo": [
+        "예약 시간에 출발지에서 만나요",
+        "예약 코드를 기사에게 보여주세요"
+      ],
+      "howToEn": [
+        "Meet at your pickup point at the booked time",
+        "Show your booking code to the driver"
+      ],
+      "notesKo": [
+        "교통 상황에 따라 소요 시간이 달라질 수 있어요",
+        "택시는 미터기 요금이 적용돼요"
+      ],
+      "notesEn": [
+        "Travel time may vary with traffic",
+        "Taxis charge the meter fare"
+      ]
+    },
+    {
+      "areaEn": "Gongdeok, Mapo-gu",
+      "areaKo": "공덕 · 마포구",
+      "bookingCount": 0,
+      "category": "FOOD",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.5432206,
+      "lng": 126.95281765,
+      "localRegular": true,
+      "nameEn": "Korean BBQ Set Menu",
+      "nameKo": "한식 바비큐 세트",
+      "onsitePriceKrw": 60000,
+      "priceKrw": 45000,
+      "rating": 4.8,
+      "reviewCount": 932,
+      "reviewEn": "The set menu price was exactly what we paid.",
+      "reviewKo": "세트 가격 그대로 결제됐어요.",
+      "slug": "food-bbq",
+      "subcategory": null,
+      "supplierNameEn": "Korean BBQ Set Menu",
+      "supplierNameKo": "한식 바비큐 세트",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/20036098/pexels-photo-20036098.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300",
+        "https://images.pexels.com/photos/8915012/pexels-photo-8915012.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/39968239/pexels-photo-39968239.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=480&w=640"
+      ],
+      "hoursKo": "매일 11:00–22:00",
+      "hoursEn": "Daily 11:00–22:00",
+      "includedKo": [
+        "예약석 안내",
+        "메뉴 1인분 (상품 설명 참조)",
+        "현장 결제 시 최종가 적용"
+      ],
+      "includedEn": [
+        "Reserved seating",
+        "One serving per person (see description)",
+        "Final price applies for on-site payment"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드와 방문 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive at your booked time",
+        "Show your booking code and visit code"
+      ],
+      "notesKo": [
+        "인기 시간대는 대기할 수 있어요",
+        "알레르기가 있으면 미리 알려주세요"
+      ],
+      "notesEn": [
+        "Popular times may involve a wait",
+        "Tell us in advance about any allergies"
+      ]
+    },
+    {
+      "areaEn": "Jagalchi Market, Jung-gu",
+      "areaKo": "자갈치시장 · 중구",
+      "bookingCount": 0,
+      "category": "FOOD",
+      "city": "BUSAN",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 35.09667913,
+      "lng": 129.03064731,
+      "localRegular": true,
+      "nameEn": "Busan Seafood Market Set",
+      "nameKo": "부산 해산물 시장 세트",
+      "onsitePriceKrw": 70000,
+      "priceKrw": 52000,
+      "rating": 4.7,
+      "reviewCount": 511,
+      "reviewEn": "Fresh seafood, no tourist markup.",
+      "reviewKo": "신선했고 관광객 바가지가 없었어요.",
+      "slug": "food-busan-seafood",
+      "subcategory": null,
+      "supplierNameEn": "Busan Seafood Market Set",
+      "supplierNameKo": "부산 해산물 시장 세트",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/18606626/pexels-photo-18606626/free-photo-of-stall-at-fish-market.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/37718077/pexels-photo-37718077.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "https://images.pexels.com/photos/18639886/pexels-photo-18639886.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+      ],
+      "hoursKo": "매일 11:00–22:00",
+      "hoursEn": "Daily 11:00–22:00",
+      "includedKo": [
+        "예약석 안내",
+        "메뉴 1인분 (상품 설명 참조)",
+        "현장 결제 시 최종가 적용"
+      ],
+      "includedEn": [
+        "Reserved seating",
+        "One serving per person (see description)",
+        "Final price applies for on-site payment"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드와 방문 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive at your booked time",
+        "Show your booking code and visit code"
+      ],
+      "notesKo": [
+        "인기 시간대는 대기할 수 있어요",
+        "알레르기가 있으면 미리 알려주세요"
+      ],
+      "notesEn": [
+        "Popular times may involve a wait",
+        "Tell us in advance about any allergies"
+      ]
+    },
+    {
+      "areaEn": "Jeju City Hall area, Jeju City",
+      "areaKo": "제주시청 인근 · 제주시",
+      "bookingCount": 0,
+      "category": "FOOD",
+      "city": "JEJU",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 33.4997202,
+      "lng": 126.5312573,
+      "localRegular": true,
+      "nameEn": "Jeju Black Pork Set",
+      "nameKo": "제주 흑돼지 세트",
+      "onsitePriceKrw": 65000,
+      "priceKrw": 48000,
+      "rating": 4.8,
+      "reviewCount": 298,
+      "reviewEn": "Famous black pork without the queue tricks.",
+      "reviewKo": "유명한 흑돼지를 줄 서는 꼼수 없이 먹었어요.",
+      "slug": "food-jeju-pork",
+      "subcategory": null,
+      "supplierNameEn": "Jeju Black Pork Set",
+      "supplierNameKo": "제주 흑돼지 세트",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/37046445/pexels-photo-37046445.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/photos/8915004/pexels-photo-8915004.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/videos/10329457/barbecue-charcoal-cuisine-delicious-10329457.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200"
+      ],
+      "hoursKo": "매일 11:00–22:00",
+      "hoursEn": "Daily 11:00–22:00",
+      "includedKo": [
+        "예약석 안내",
+        "메뉴 1인분 (상품 설명 참조)",
+        "현장 결제 시 최종가 적용"
+      ],
+      "includedEn": [
+        "Reserved seating",
+        "One serving per person (see description)",
+        "Final price applies for on-site payment"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드와 방문 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive at your booked time",
+        "Show your booking code and visit code"
+      ],
+      "notesKo": [
+        "인기 시간대는 대기할 수 있어요",
+        "알레르기가 있으면 미리 알려주세요"
+      ],
+      "notesEn": [
+        "Popular times may involve a wait",
+        "Tell us in advance about any allergies"
+      ]
+    },
+    {
+      "areaEn": "Gwangjang Market, Jongno-gu",
+      "areaKo": "광장시장 · 종로구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.57005438,
+      "lng": 126.99972444,
+      "localRegular": true,
+      "nameEn": "Neighborhood Market & Alley Walk",
+      "nameKo": "동네 시장·골목 산책",
+      "onsitePriceKrw": 50000,
+      "priceKrw": 35000,
+      "rating": 4.9,
+      "reviewCount": 1204,
+      "reviewEn": "Groceries, snacks and slow alley walks — a normal local morning.",
+      "reviewKo": "장보기, 간식, 느린 골목 산책 — 평범한 동네의 아침이었어요.",
+      "slug": "exp-hanbok",
+      "subcategory": null,
+      "supplierNameEn": "Neighborhood Market & Alley Walk",
+      "supplierNameKo": "동네 시장·골목 산책",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/37785270/pexels-photo-37785270/free-photo-of-vibrant-street-market-in-seoul-s-traditional-district.jpeg?w=600",
+        "https://images.pexels.com/photos/29673485/pexels-photo-29673485.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/26730931/pexels-photo-26730931.jpeg?w=600"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    },
+    {
+      "areaEn": "Sehwa Beach, Gujwa-eup",
+      "areaKo": "세화해변 · 구좌읍",
+      "bookingCount": 0,
+      "category": "SIGHTSEEING",
+      "city": "JEJU",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 33.52520125,
+      "lng": 126.85998093,
+      "localRegular": true,
+      "nameEn": "Jeju Haenyeo Village Experience",
+      "nameKo": "제주 해녀 마을 체험",
+      "onsitePriceKrw": 58000,
+      "priceKrw": 42000,
+      "rating": 4.9,
+      "reviewCount": 187,
+      "reviewEn": "A rare, respectful look at haenyeo life.",
+      "reviewKo": "해녀의 삶을 가까이서 볼 수 있는 귀한 경험이었어요.",
+      "slug": "exp-haenyeo",
+      "subcategory": null,
+      "supplierNameEn": "Jeju Haenyeo Village Experience",
+      "supplierNameKo": "제주 해녀 마을 체험",
+      "unit": "PERSON",
+      "images": [
+        "https://i.natgeofe.com/n/efc3324e-62ec-4a61-9e6d-41452431749c/DH_HAENYEO_2017_0639FIN02_2048pix.jpg",
+        "https://www.hanway.travel/_next/image?url=https%3A%2F%2Fahmo-cms-media.s3.ap-northeast-2.amazonaws.com%2Fhaenyeo%3Fv%3D1787368034382&w=828&q=75",
+        "https://www.tastingtable.com/img/gallery/best-unesco-cultural-experiences/jeju-haenyeo-1.webp"
+      ],
+      "hoursKo": "매일 09:00–18:00",
+      "hoursEn": "Daily 09:00–18:00",
+      "includedKo": [
+        "체험 1회",
+        "현장 안내"
+      ],
+      "includedEn": [
+        "One experience",
+        "On-site guidance"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 집결 장소로 오세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Come to the meeting point at the booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "날씨에 따라 일정이 바뀔 수 있어요",
+        "편한 신발을 추천해요"
+      ],
+      "notesEn": [
+        "Schedule may change with the weather",
+        "Comfortable shoes are recommended"
+      ]
+    },
+    {
+      "areaEn": "Gamcheon Culture Village, Saha-gu",
+      "areaKo": "감천문화마을 · 사하구",
+      "bookingCount": 0,
+      "category": "SIGHTSEEING",
+      "city": "BUSAN",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 35.09805635,
+      "lng": 129.00855011,
+      "localRegular": true,
+      "nameEn": "Busan Gamcheon Culture Tour",
+      "nameKo": "부산 감천 문화 투어",
+      "onsitePriceKrw": 52000,
+      "priceKrw": 38000,
+      "rating": 4.8,
+      "reviewCount": 643,
+      "reviewEn": "Colorful village, great local guide.",
+      "reviewKo": "알록달록한 마을과 좋은 현지 가이드였어요.",
+      "slug": "exp-gamcheon",
+      "subcategory": null,
+      "supplierNameEn": "Busan Gamcheon Culture Tour",
+      "supplierNameKo": "부산 감천 문화 투어",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/33097924/pexels-photo-33097924/free-photo-of-canli-gamcheon-kultur-mahallesi-busan.jpeg?auto=compress&w=1200",
+        "https://images.pexels.com/photos/31743214/pexels-photo-31743214.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+        "https://images.pexels.com/photos/29861965/pexels-photo-29861965.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+      ],
+      "hoursKo": "매일 09:00–18:00",
+      "hoursEn": "Daily 09:00–18:00",
+      "includedKo": [
+        "체험 1회",
+        "현장 안내"
+      ],
+      "includedEn": [
+        "One experience",
+        "On-site guidance"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 집결 장소로 오세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Come to the meeting point at the booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "날씨에 따라 일정이 바뀔 수 있어요",
+        "편한 신발을 추천해요"
+      ],
+      "notesEn": [
+        "Schedule may change with the weather",
+        "Comfortable shoes are recommended"
+      ]
+    },
+    {
+      "areaEn": "Sangsu, Mapo-gu",
+      "areaKo": "상수 · 마포구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.54760618,
+      "lng": 126.92356673,
+      "localRegular": true,
+      "nameEn": "English-Speaking Hair Salon: Cut & Color",
+      "nameKo": "영어 가능 헤어살롱 커트·염색",
+      "onsitePriceKrw": 120000,
+      "priceKrw": 85000,
+      "rating": 4.9,
+      "reviewCount": 428,
+      "reviewEn": "English consultation, exactly the cut I showed.",
+      "reviewKo": "영어로 상담했고 보여준 사진 그대로 커트됐어요.",
+      "slug": "beauty-hair-cut-color",
+      "subcategory": "hair",
+      "supplierNameEn": "English-Speaking Hair Salon: Cut & Color",
+      "supplierNameKo": "영어 가능 헤어살롱 커트·염색",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/3993470/pexels-photo-3993470.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/3993443/pexels-photo-3993443.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "https://images.pexels.com/photos/8834075/pexels-photo-8834075.jpeg?w=600"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Gangnam Station, Gangnam-gu",
+      "areaKo": "강남역 · 강남구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.50024456,
+      "lng": 127.02685552,
+      "localRegular": true,
+      "nameEn": "K-Hair Perm & Styling Studio",
+      "nameKo": "K-헤어 펌·스타일링 스튜디오",
+      "onsitePriceKrw": 150000,
+      "priceKrw": 110000,
+      "rating": 4.8,
+      "reviewCount": 265,
+      "reviewEn": "Soft perm that suits my face shape, no upselling.",
+      "reviewKo": "얼굴형에 맞는 자연스러운 펌, 추가 권유가 없었어요.",
+      "slug": "beauty-hair-perm",
+      "subcategory": "hair",
+      "supplierNameEn": "K-Hair Perm & Styling Studio",
+      "supplierNameKo": "K-헤어 펌·스타일링 스튜디오",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/3455717/pexels-photo-3455717.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/4154201/pexels-photo-4154201.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/19588702/pexels-photo-19588702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Myeongdong, Jung-gu",
+      "areaKo": "명동 · 중구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.56376444,
+      "lng": 126.98448713,
+      "localRegular": false,
+      "nameEn": "K-Makeup Studio: Daily Makeup",
+      "nameKo": "K-메이크업 스튜디오 데일리 메이크업",
+      "onsitePriceKrw": 90000,
+      "priceKrw": 65000,
+      "rating": 4.9,
+      "reviewCount": 517,
+      "reviewEn": "Natural K-style daily makeup, photo-ready.",
+      "reviewKo": "자연스러운 K-스타일 데일리 메이크업, 사진발이 좋았어요.",
+      "slug": "beauty-makeup-daily",
+      "subcategory": "makeup",
+      "supplierNameEn": "K-Makeup Studio: Daily Makeup",
+      "supplierNameKo": "K-메이크업 스튜디오 데일리 메이크업",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/6960150/pexels-photo-6960150.jpeg?w=600",
+        "https://images.pexels.com/photos/4287641/pexels-photo-4287641.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/38765479/pexels-photo-38765479/free-photo-of-professional-makeup-artist-applying-makeup-on-client.jpeg?auto=compress&w=600"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Seongsu-dong, Seongdong-gu",
+      "areaKo": "성수동 · 성동구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.54456684,
+      "lng": 127.05596143,
+      "localRegular": false,
+      "nameEn": "Personal Color Makeup Session",
+      "nameKo": "퍼스널컬러 메이크업 세션",
+      "onsitePriceKrw": 130000,
+      "priceKrw": 95000,
+      "rating": 4.9,
+      "reviewCount": 342,
+      "reviewEn": "Found my colors and learned how to use them.",
+      "reviewKo": "내 컬러를 찾고 활용법까지 배울 수 있었어요.",
+      "slug": "beauty-makeup-personal-color",
+      "subcategory": "personalcolor",
+      "supplierNameEn": "Personal Color Makeup Session",
+      "supplierNameKo": "퍼스널컬러 메이크업 세션",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/8479113/pexels-photo-8479113.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/photos/7281772/pexels-photo-7281772.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy",
+        "https://images.pexels.com/photos/8479395/pexels-photo-8479395.jpeg?auto=compress&cs=tinysrgb&w=600"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Apgujeong Rodeo, Gangnam-gu",
+      "areaKo": "압구정로데오 · 강남구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.52740447,
+      "lng": 127.04057695,
+      "localRegular": false,
+      "nameEn": "Esthetic Skin Care: Glow Facial",
+      "nameKo": "에스테틱 글로우 페이셜",
+      "onsitePriceKrw": 120000,
+      "priceKrw": 89000,
+      "rating": 4.8,
+      "reviewCount": 214,
+      "reviewEn": "Gentle esthetic facial care, no medical devices, no pressure to add treatments.",
+      "reviewKo": "의료기기 없는 순수 에스테틱 관리, 추가 시술 권유가 없었어요.",
+      "slug": "beauty-esthetic-glow",
+      "subcategory": "esthetic",
+      "supplierNameEn": "Esthetic Skin Care: Glow Facial",
+      "supplierNameKo": "에스테틱 글로우 페이셜",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/9336031/pexels-photo-9336031.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/photos/3985321/pexels-photo-3985321.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/33242625/pexels-photo-33242625.jpeg?auto=compress&w=600"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Seochon, Jongno-gu",
+      "areaKo": "서촌 · 종로구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.57919471,
+      "lng": 126.97139123,
+      "localRegular": false,
+      "nameEn": "Esthetic Head Spa & Scalp Care",
+      "nameKo": "에스테틱 헤드스파·두피 케어",
+      "onsitePriceKrw": 95000,
+      "priceKrw": 69000,
+      "rating": 4.9,
+      "reviewCount": 167,
+      "reviewEn": "A quiet head spa Koreans book after long work weeks.",
+      "reviewKo": "긴 한 주를 보낸 뒤 한국인들이 예약하는 조용한 헤드스파였어요.",
+      "slug": "beauty-esthetic-headspa",
+      "subcategory": "esthetic",
+      "supplierNameEn": "Esthetic Head Spa & Scalp Care",
+      "supplierNameKo": "에스테틱 헤드스파·두피 케어",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/7755482/pexels-photo-7755482.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+        "https://images.pexels.com/photos/8834043/pexels-photo-8834043.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&h=600",
+        "https://images.pexels.com/photos/23349900/pexels-photo-23349900.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Euljiro, Jung-gu",
+      "areaKo": "을지로 · 중구",
+      "bookingCount": 0,
+      "category": "PUB",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.56628097,
+      "lng": 126.99103731,
+      "localRegular": true,
+      "nameEn": "Euljiro Outdoor Pocha Night",
+      "nameKo": "을지로 야장 포차",
+      "onsitePriceKrw": 45000,
+      "priceKrw": 32000,
+      "rating": 4.8,
+      "reviewCount": 386,
+      "reviewEn": "Plastic stools, grilled snacks, the full Euljiro night.",
+      "reviewKo": "플라스틱 의자와 구운 안주, 을지로의 밤 그대로였어요.",
+      "slug": "pub-euljiro-pocha",
+      "subcategory": null,
+      "supplierNameEn": "Euljiro Outdoor Pocha Night",
+      "supplierNameKo": "을지로 야장 포차",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/35177681/pexels-photo-35177681.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/photos/33202869/pexels-photo-33202869.jpeg?auto=compress&w=600",
+        "https://images.pexels.com/photos/40394267/pexels-photo-40394267/free-photo-of-vibrant-korean-street-food-stall-at-night.jpeg?cs=tinysrgb&dpr=1&w=500"
+      ],
+      "hoursKo": "매일 17:00–01:00",
+      "hoursEn": "Daily 17:00–01:00",
+      "includedKo": [
+        "입장 예약",
+        "안주 1종 (상품 설명 참조)"
+      ],
+      "includedEn": [
+        "Entry reservation",
+        "One snack dish (see description)"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 입장하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Enter at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "만 19세 이상만 입장할 수 있어요",
+        "신분증을 지참하세요"
+      ],
+      "notesEn": [
+        "19+ only",
+        "Bring your ID"
+      ]
+    },
+    {
+      "areaEn": "Seogyo-dong, Mapo-gu",
+      "areaKo": "서교동 · 마포구",
+      "bookingCount": 0,
+      "category": "KBEAUTY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.55343108,
+      "lng": 126.91266228,
+      "localRegular": false,
+      "nameEn": "K-Nail Studio: Gel Nail Art",
+      "nameKo": "K-네일 스튜디오 젤 네일아트",
+      "onsitePriceKrw": 80000,
+      "priceKrw": 55000,
+      "rating": 4.8,
+      "reviewCount": 293,
+      "reviewEn": "Seasonal Korean nail art, priced by design before we started.",
+      "reviewKo": "계절감 있는 한국식 네일아트, 시작 전에 디자인별 가격이 정해졌어요.",
+      "slug": "beauty-nail-gel",
+      "subcategory": "nail",
+      "supplierNameEn": "K-Nail Studio: Gel Nail Art",
+      "supplierNameKo": "K-네일 스튜디오 젤 네일아트",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/3997385/pexels-photo-3997385.jpeg?cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/3997389/pexels-photo-3997389.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+        "https://images.pexels.com/photos/7446915/pexels-photo-7446915.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+      ],
+      "hoursKo": "매일 10:00–21:00",
+      "hoursEn": "Daily 10:00–21:00",
+      "includedKo": [
+        "시술 1회",
+        "상담",
+        "애프터케어 안내"
+      ],
+      "includedEn": [
+        "One treatment session",
+        "Consultation",
+        "Aftercare guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "피부 상태에 따라 시술이 조정될 수 있어요",
+        "시술 전후 주의사항을 확인하세요"
+      ],
+      "notesEn": [
+        "Treatment may be adjusted to your skin condition",
+        "Check the before/after care notes"
+      ]
+    },
+    {
+      "areaEn": "Mangwon-dong, Mapo-gu",
+      "areaKo": "망원동 · 마포구",
+      "bookingCount": 0,
+      "category": "PUB",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 37.55754238,
+      "lng": 126.90875378,
+      "localRegular": true,
+      "nameEn": "Neighborhood Hof: Chicken & Draft Beer Set",
+      "nameKo": "동네 호프 치킨·생맥주 세트",
+      "onsitePriceKrw": 38000,
+      "priceKrw": 28000,
+      "rating": 4.7,
+      "reviewCount": 254,
+      "reviewEn": "The corner hof everyone in the block actually goes to.",
+      "reviewKo": "동네 사람들이 실제로 가는 그 호프집이었어요.",
+      "slug": "pub-hof-chicken",
+      "subcategory": null,
+      "supplierNameEn": "Neighborhood Hof: Chicken & Draft Beer Set",
+      "supplierNameKo": "동네 호프 치킨·생맥주 세트",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/31228746/pexels-photo-31228746/free-photo-of-lackra-bbq-revben-och-olfest.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.rawpixel.com/image_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAzL3Jhd3BpeGVsX29mZmljZV80Nl9jbG9zZV91cF9waG90b19vZl9mcmllZF9jaGlja2VuX2FuZF9iZWVyX2FtZV8zYmZmZGE3NS05YTUxLTQyODEtODllNS0zY2E5ZmRiMmQyZjFfMS5qcGc.jpg",
+        "https://res.feednews.com/assets/v2/0a07da87778430e447b87cd1de3b9200?quality=ug&resize=720&cl=_ko&format=webp"
+      ],
+      "hoursKo": "매일 17:00–01:00",
+      "hoursEn": "Daily 17:00–01:00",
+      "includedKo": [
+        "입장 예약",
+        "안주 1종 (상품 설명 참조)"
+      ],
+      "includedEn": [
+        "Entry reservation",
+        "One snack dish (see description)"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 입장하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Enter at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "만 19세 이상만 입장할 수 있어요",
+        "신분증을 지참하세요"
+      ],
+      "notesEn": [
+        "19+ only",
+        "Bring your ID"
+      ]
+    },
+    {
+      "areaEn": "Seomyeon, Busanjin-gu",
+      "areaKo": "서면 · 부산진구",
+      "bookingCount": 0,
+      "category": "PUB",
+      "city": "BUSAN",
+      "isMeterTaxi": false,
+      "isSample": false,
+      "lat": 35.15779726,
+      "lng": 129.05989495,
+      "localRegular": true,
+      "nameEn": "Busan Makgeolli & Pajeon House",
+      "nameKo": "부산 막걸리·파전 집",
+      "onsitePriceKrw": 42000,
+      "priceKrw": 30000,
+      "rating": 4.8,
+      "reviewCount": 173,
+      "reviewEn": "Rainy-day makgeolli and pajeon, ordered the local way.",
+      "reviewKo": "비 오는 날 막걸리와 파전, 현지 방식 그대로 주문했어요.",
+      "slug": "pub-busan-makgeolli",
+      "subcategory": null,
+      "supplierNameEn": "Busan Makgeolli & Pajeon House",
+      "supplierNameKo": "부산 막걸리·파전 집",
+      "unit": "PERSON",
+      "images": [
+        "https://mblogthumb-phinf.pstatic.net/MjAyNDEwMDdfMTU1/MDAxNzI4MjU1Njc4NTE5.cknCObYV1e8rN0G8qdyVrxWTNgyNXeAy8ZGjzRnolsIg._t90XcJ8sVhME8uevB0knVd_6xYtY0-mWYaLlK1YAh0g.JPEG/1728103336762.jpg?type=w800",
+        "https://postfiles.pstatic.net/MjAyMjA2MjBfNTAg/MDAxNjU1NzIzODY0NDEw.MiYGgXiEB_jpIxnse5i3ndDIubMrCquW5rBHQQ95OEkg.wywDdAv4_aYa-uaeV0NNQVFopJ5NhpL3CZQRE49Z6hcg.PNG.oldemperor17/image.png?type=w773",
+        "https://postfiles.pstatic.net/MjAyNDA1MjVfMjM2/MDAxNzE2NTc0NjM0Mzk1.VuTgmZ1th79oJMNTKQjKb0G5BBp1vXboyN49lw4ClgIg.83E7f3wgoD82MvNH8OxjY1nwFchpLpCy7ZX25pGCg98g.JPEG/output_3567125130.jpg?type=w773"
+      ],
+      "hoursKo": "매일 17:00–01:00",
+      "hoursEn": "Daily 17:00–01:00",
+      "includedKo": [
+        "입장 예약",
+        "안주 1종 (상품 설명 참조)"
+      ],
+      "includedEn": [
+        "Entry reservation",
+        "One snack dish (see description)"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 입장하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Enter at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "만 19세 이상만 입장할 수 있어요",
+        "신분증을 지참하세요"
+      ],
+      "notesEn": [
+        "19+ only",
+        "Bring your ID"
+      ]
+    },
+    {
+      "areaEn": "Hapjeong, Mapo-gu",
+      "areaKo": "합정 · 마포구",
+      "bookingCount": 0,
+      "category": "KPOP",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.55016346,
+      "lng": 126.91510326,
+      "localRegular": false,
+      "nameEn": "K-POP Dance Class: Learn a Chorus",
+      "nameKo": "K-POP 댄스 체험: 후렴 안무 배우기",
+      "onsitePriceKrw": 65000,
+      "priceKrw": 45000,
+      "rating": 4.9,
+      "reviewCount": 508,
+      "reviewEn": "Learned the full chorus choreography in one session, filmed at the end.",
+      "reviewKo": "한 세션에 후렴 안무를 다 배우고 마지막에 영상까지 찍었어요.",
+      "slug": "kpop-dance-class",
+      "subcategory": "dance",
+      "supplierNameEn": "K-POP Dance Class: Learn a Chorus",
+      "supplierNameKo": "K-POP 댄스 체험: 후렴 안무 배우기",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/5153998/pexels-photo-5153998.jpeg?w=600",
+        "https://images.pexels.com/photos/10640447/pexels-photo-10640447.jpeg?auto=compress&w=1600",
+        "https://images.pexels.com/photos/5888336/pexels-photo-5888336.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy"
+      ],
+      "hoursKo": "매일 10:00–20:00",
+      "hoursEn": "Daily 10:00–20:00",
+      "includedKo": [
+        "클래스·투어 1회",
+        "현장 안내"
+      ],
+      "includedEn": [
+        "One class / tour",
+        "On-site guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "촬영 가능 여부는 현장 안내를 따르세요",
+        "일정은 현장 상황에 따라 바뀔 수 있어요"
+      ],
+      "notesEn": [
+        "Follow on-site guidance on photos",
+        "Schedule may change on site"
+      ]
+    },
+    {
+      "areaEn": "Cheongdam-dong, Gangnam-gu",
+      "areaKo": "청담동 · 강남구",
+      "bookingCount": 0,
+      "category": "KPOP",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.51912132,
+      "lng": 127.05193312,
+      "localRegular": false,
+      "nameEn": "Big-4 Agency Headquarters Visit",
+      "nameKo": "국내 4대 기획사 본사 방문 체험",
+      "onsitePriceKrw": 85000,
+      "priceKrw": 60000,
+      "rating": 4.7,
+      "reviewCount": 231,
+      "reviewEn": "Guided visit around the big four agency buildings and their fan-favorite photo spots.",
+      "reviewKo": "4대 기획사 건물과 팬들이 찾는 포토 스팟을 가이드와 함께 돌았어요.",
+      "slug": "kpop-agency-visit",
+      "subcategory": "agency",
+      "supplierNameEn": "Big-4 Agency Headquarters Visit",
+      "supplierNameKo": "국내 4대 기획사 본사 방문 체험",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/33577981/pexels-photo-33577981/free-photo-of-modern-skyscrapers-in-busy-seoul-intersection.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/23879181/pexels-photo-23879181.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy",
+        "https://images.pexels.com/photos/30974921/pexels-photo-30974921.jpeg?auto=compress&cs=tinysrgb&w=1200&loading=lazy"
+      ],
+      "hoursKo": "매일 10:00–20:00",
+      "hoursEn": "Daily 10:00–20:00",
+      "includedKo": [
+        "클래스·투어 1회",
+        "현장 안내"
+      ],
+      "includedEn": [
+        "One class / tour",
+        "On-site guidance"
+      ],
+      "howToKo": [
+        "예약 시간 10분 전에 도착하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Arrive 10 minutes before your booking",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "촬영 가능 여부는 현장 안내를 따르세요",
+        "일정은 현장 상황에 따라 바뀔 수 있어요"
+      ],
+      "notesEn": [
+        "Follow on-site guidance on photos",
+        "Schedule may change on site"
+      ]
+    },
+    {
+      "areaEn": "Samcheong-dong, Jongno-gu",
+      "areaKo": "삼청동 · 종로구",
+      "bookingCount": 0,
+      "category": "KDRAMA",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.58379887,
+      "lng": 126.98191687,
+      "localRegular": false,
+      "nameEn": "K-Drama Filming Locations Tour: Seoul",
+      "nameKo": "K-드라마 촬영지 투어: 서울",
+      "onsitePriceKrw": 75000,
+      "priceKrw": 52000,
+      "rating": 4.8,
+      "reviewCount": 342,
+      "reviewEn": "Iconic drama scenes matched to the real alleys and cafes where they were shot.",
+      "reviewKo": "유명한 드라마 장면과 실제 촬영된 골목·카페를 맞춰 보는 투어였어요.",
+      "slug": "kdrama-seoul-locations",
+      "subcategory": "filming",
+      "supplierNameEn": "K-Drama Filming Locations Tour: Seoul",
+      "supplierNameKo": "K-드라마 촬영지 투어: 서울",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/19271534/pexels-photo-19271534.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+        "https://images.pexels.com/photos/26732085/pexels-photo-26732085.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/photos/31680634/pexels-photo-31680634/free-photo-of-bustling-street-in-seoul-s-shopping-district.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy"
+      ],
+      "hoursKo": "매일 09:00–18:00",
+      "hoursEn": "Daily 09:00–18:00",
+      "includedKo": [
+        "투어 1회",
+        "현장 안내"
+      ],
+      "includedEn": [
+        "One tour",
+        "On-site guidance"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 집결 장소로 오세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Come to the meeting point at the booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "날씨에 따라 일정이 바뀔 수 있어요",
+        "촬영지 출입 규정을 따르세요"
+      ],
+      "notesEn": [
+        "Schedule may change with the weather",
+        "Follow the filming-location access rules"
+      ]
+    },
+    {
+      "areaEn": "Aewol, Jeju City",
+      "areaKo": "애월 · 제주시",
+      "bookingCount": 0,
+      "category": "KDRAMA",
+      "city": "JEJU",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 33.45912599,
+      "lng": 126.31037606,
+      "localRegular": false,
+      "nameEn": "K-Drama Filming Locations Tour: Jeju",
+      "nameKo": "K-드라마 촬영지 투어: 제주",
+      "onsitePriceKrw": 82000,
+      "priceKrw": 58000,
+      "rating": 4.9,
+      "reviewCount": 176,
+      "reviewEn": "Seaside cafes and oreum hills from the dramas, in one slow day route.",
+      "reviewKo": "드라마 속 바닷가 카페와 오름을 하루 코스로 천천히 돌았어요.",
+      "slug": "kdrama-jeju-locations",
+      "subcategory": "filming",
+      "supplierNameEn": "K-Drama Filming Locations Tour: Jeju",
+      "supplierNameKo": "K-드라마 촬영지 투어: 제주",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/11687637/pexels-photo-11687637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/35168823/pexels-photo-35168823/free-photo-of-sunrise-at-seongsan-ilchulbong-jeju-island.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/34350260/pexels-photo-34350260/free-photo-of-scenic-coastal-cliff-view-at-jeju-island-south-korea.jpeg?h=1000&w=1500&fit=crop&markalign=center%2Cmiddle&txt=pexels.com&txtalign=center&txtsize=60&txtclr=eeffffff&txtfont=Avenir-Heavy&txtshad=10&mark=https%3A%2F%2Fassets.imgix.net%2F~text%3Ftxtclr%3Dfff%26txtsize%3D120%26txtpad%3D20%26bg%3D80000000%26txtfont%3DAvenir-Heavy%26txtalign%3Dcenter%26w%3D1300%26txt%3DFree%2520Stock%2520Photos"
+      ],
+      "hoursKo": "매일 09:00–18:00",
+      "hoursEn": "Daily 09:00–18:00",
+      "includedKo": [
+        "투어 1회",
+        "현장 안내"
+      ],
+      "includedEn": [
+        "One tour",
+        "On-site guidance"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 집결 장소로 오세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Come to the meeting point at the booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "날씨에 따라 일정이 바뀔 수 있어요",
+        "촬영지 출입 규정을 따르세요"
+      ],
+      "notesEn": [
+        "Schedule may change with the weather",
+        "Follow the filming-location access rules"
+      ]
+    },
+    {
+      "areaEn": "Itaewon, Yongsan-gu",
+      "areaKo": "이태원 · 용산구",
+      "bookingCount": 0,
+      "category": "DELIVERY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.53433119,
+      "lng": 126.99572678,
+      "localRegular": false,
+      "nameEn": "Late-Night Chicken Delivery to Your Stay",
+      "nameKo": "숙소로 오는 야식 치킨 딜리버리",
+      "onsitePriceKrw": 42000,
+      "priceKrw": 32000,
+      "rating": 4.8,
+      "reviewCount": 864,
+      "reviewEn": "Ordered from the stay, arrived hot with the same menu price as the app Koreans use.",
+      "reviewKo": "숙소에서 주문했고 한국인이 쓰는 앱과 같은 메뉴 가격에 뜨겁게 도착했어요.",
+      "slug": "delivery-chicken-night",
+      "subcategory": null,
+      "supplierNameEn": "Late-Night Chicken Delivery to Your Stay",
+      "supplierNameKo": "숙소로 오는 야식 치킨 딜리버리",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/7788315/pexels-photo-7788315.jpeg?cs=srgb&dl=pexels-babydov-7788315.jpg&fm=jpg",
+        "https://images.pexels.com/photos/7788310/pexels-photo-7788310.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/6368735/pexels-photo-6368735.jpeg?auto=compress&cs=tinysrgb&w=1600"
+      ],
+      "hoursKo": "매일 11:00–23:00",
+      "hoursEn": "Daily 11:00–23:00",
+      "includedKo": [
+        "주문 상품 1세트",
+        "배달"
+      ],
+      "includedEn": [
+        "One ordered set",
+        "Delivery"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 배달돼요",
+        "예약 코드를 배달원에게 알려주세요"
+      ],
+      "howToEn": [
+        "Delivered at your booked time",
+        "Give your booking code to the courier"
+      ],
+      "notesKo": [
+        "배달 시간은 교통·날씨에 따라 달라질 수 있어요",
+        "주소·연락처를 정확히 입력하세요"
+      ],
+      "notesEn": [
+        "Delivery time may vary with traffic and weather",
+        "Enter your address and contact details correctly"
+      ]
+    },
+    {
+      "areaEn": "Yeouido, Yeongdeungpo-gu",
+      "areaKo": "여의도 · 영등포구",
+      "bookingCount": 0,
+      "category": "DELIVERY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.52065263,
+      "lng": 126.92488606,
+      "localRegular": false,
+      "nameEn": "Bunsik Delivery Set: Tteokbokki & Gimbap",
+      "nameKo": "분식 딜리버리 세트: 떡볶이·김밥",
+      "onsitePriceKrw": 33000,
+      "priceKrw": 24000,
+      "rating": 4.7,
+      "reviewCount": 529,
+      "reviewEn": "The neighborhood snack set office workers order, delivered to the hotel desk.",
+      "reviewKo": "직장인들이 시키는 동네 분식 세트를 호텔 데스크까지 배달받았어요.",
+      "slug": "delivery-bunsik-set",
+      "subcategory": null,
+      "supplierNameEn": "Bunsik Delivery Set: Tteokbokki & Gimbap",
+      "supplierNameKo": "분식 딜리버리 세트: 떡볶이·김밥",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/16842132/pexels-photo-16842132/free-photo-of-abendessen-mittagessen-mahlzeit-fisch.jpeg?h=1000&w=1500&fit=crop&markalign=center%2Cmiddle&txt=pexels.com&txtalign=center&txtsize=60&txtclr=eeffffff&txtfont=Avenir-Heavy&txtshad=10&mark=https%3A%2F%2Fassets.imgix.net%2F~text%3Ftxtclr%3Dfff%26txtsize%3D120%26txtpad%3D20%26bg%3D80000000%26txtfont%3DAvenir-Heavy%26txtalign%3Dcenter%26w%3D1300%26txt%3DStock%2520Fotos%252C%2520Lizenzfreie%2520Bilder%2520%2526%2520Kostenlose%2520Bilder",
+        "https://images.pexels.com/photos/31346218/pexels-photo-31346218.jpeg",
+        "https://images.pexels.com/photos/34787712/pexels-photo-34787712.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy"
+      ],
+      "hoursKo": "매일 11:00–23:00",
+      "hoursEn": "Daily 11:00–23:00",
+      "includedKo": [
+        "주문 상품 1세트",
+        "배달"
+      ],
+      "includedEn": [
+        "One ordered set",
+        "Delivery"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 배달돼요",
+        "예약 코드를 배달원에게 알려주세요"
+      ],
+      "howToEn": [
+        "Delivered at your booked time",
+        "Give your booking code to the courier"
+      ],
+      "notesKo": [
+        "배달 시간은 교통·날씨에 따라 달라질 수 있어요",
+        "주소·연락처를 정확히 입력하세요"
+      ],
+      "notesEn": [
+        "Delivery time may vary with traffic and weather",
+        "Enter your address and contact details correctly"
+      ]
+    },
+    {
+      "areaEn": "Yeonnam-dong, Mapo-gu",
+      "areaKo": "연남동 · 마포구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.56517198,
+      "lng": 126.9171772,
+      "localRegular": false,
+      "nameEn": "Neighborhood Cafe & Dessert Stop",
+      "nameKo": "동네 카페·디저트",
+      "onsitePriceKrw": 18000,
+      "priceKrw": 12000,
+      "rating": 4.7,
+      "reviewCount": 689,
+      "reviewEn": "The corner cafe office workers and students actually live in — same menu board, same prices.",
+      "reviewKo": "직장인과 학생들이 실제로 살아가는 동네 카페 — 같은 메뉴판, 같은 가격이었어요.",
+      "slug": "daily-cafe",
+      "subcategory": null,
+      "supplierNameEn": "Neighborhood Cafe & Dessert Stop",
+      "supplierNameKo": "동네 카페·디저트",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/15860802/pexels-photo-15860802/free-photo-of-interior-design-of-cafe.jpeg?auto=compress&cs=tinysrgb&w=600&loading=lazy",
+        "https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/13591748/pexels-photo-13591748.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    },
+    {
+      "areaEn": "Dongdaemun, Jung-gu",
+      "areaKo": "동대문 · 중구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.5646568,
+      "lng": 127.00566471,
+      "localRegular": false,
+      "nameEn": "Neighborhood Sauna & Jjimjilbang Day Pass",
+      "nameKo": "동네 사우나·찜질방 하루 이용권",
+      "onsitePriceKrw": 22000,
+      "priceKrw": 15000,
+      "rating": 4.8,
+      "reviewCount": 512,
+      "reviewEn": "Lockers, baths and the jjimjilbang resting hall — a completely ordinary Korean weekend reset.",
+      "reviewKo": "락커, 탕, 찜질방 휴게실까지 — 평범한 한국인의 주말 리셋이었어요.",
+      "slug": "daily-sauna",
+      "subcategory": null,
+      "supplierNameEn": "Neighborhood Sauna & Jjimjilbang Day Pass",
+      "supplierNameKo": "동네 사우나·찜질방 하루 이용권",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/19980238/pexels-photo-19980238/free-photo-of-interior-of-sauna-cabin.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://images.pexels.com/photos/25084818/pexels-photo-25084818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_1000/v1731409695/plyb52g9wm60uvbs4jdu.webp"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    },
+    {
+      "areaEn": "Daehangno, Jongno-gu",
+      "areaKo": "대학로 · 종로구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.5821589,
+      "lng": 127.00189204,
+      "localRegular": false,
+      "nameEn": "Neighborhood PC Bang: 3-Hour Pass",
+      "nameKo": "동네 PC방 3시간 이용권",
+      "onsitePriceKrw": 9000,
+      "priceKrw": 6000,
+      "rating": 4.6,
+      "reviewCount": 438,
+      "reviewEn": "High-end rigs, ramyeon ordered to your seat — the PC bang exactly as local gamers use it.",
+      "reviewKo": "고사양 자리, 자리로 배달되는 라면 — 동네 게이머들이 쓰는 그대로의 PC방이었어요.",
+      "slug": "daily-pc-bang",
+      "subcategory": null,
+      "supplierNameEn": "Neighborhood PC Bang: 3-Hour Pass",
+      "supplierNameKo": "동네 PC방 3시간 이용권",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/7862618/pexels-photo-7862618.jpeg?auto=compress&cs=tinysrgb&w=750",
+        "https://images.pexels.com/photos/9072374/pexels-photo-9072374.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+        "https://images.pexels.com/photos/9072380/pexels-photo-9072380.jpeg?w=600"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    },
+    {
+      "areaEn": "Sinchon, Seodaemun-gu",
+      "areaKo": "신촌 · 서대문구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.55507463,
+      "lng": 126.93658449,
+      "localRegular": false,
+      "nameEn": "Coin Karaoke Booth: Per Song",
+      "nameKo": "동네 코인노래방 (1곡 500원)",
+      "onsitePriceKrw": 500,
+      "priceKrw": 500,
+      "rating": 4.7,
+      "reviewCount": 764,
+      "reviewEn": "A coin karaoke booth by the station — ₩500 per song, just like everyone else here. Book as many songs as you want: 10 songs, ₩5,000.",
+      "reviewKo": "역 앞 코인노래방 — 1곡 500원, 동네 사람들과 똑같아요. 원하는 곡 수만큼 예약하세요: 10곡이면 5,000원.",
+      "slug": "daily-karaoke",
+      "subcategory": null,
+      "supplierNameEn": "Coin Karaoke Booth: Per Song",
+      "supplierNameKo": "동네 코인노래방 (1곡 500원)",
+      "unit": "SONG",
+      "images": [
+        "https://images.pexels.com/photos/7887041/pexels-photo-7887041.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/7887036/pexels-photo-7887036.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "https://images.pexels.com/photos/7886998/pexels-photo-7886998.jpeg?w=600"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    },
+    {
+      "areaEn": "Namdaemun, Jung-gu",
+      "areaKo": "남대문 · 중구",
+      "bookingCount": 0,
+      "category": "EYEWEAR",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.56366692,
+      "lng": 126.98056194,
+      "localRegular": false,
+      "nameEn": "Vision Check & Custom Glasses Consultation — Store Visit",
+      "nameKo": "시력검사 + 맞춤 안경 상담 (매장 방문 예약)",
+      "onsitePriceKrw": 35000,
+      "priceKrw": 25000,
+      "rating": 4.8,
+      "reviewCount": 214,
+      "reviewEn": "Booked the visit online, then everything happened at the shop: eye check, consultation, and choosing my glasses with the optician.",
+      "reviewKo": "온라인으로는 방문 예약만 했고, 시력검사·상담·안경 선택은 전부 매장에서 안경사와 함께 진행됐어요.",
+      "slug": "eyewear-vision-check",
+      "subcategory": null,
+      "supplierNameEn": "Vision Check & Custom Glasses Consultation — Store Visit",
+      "supplierNameKo": "시력검사 + 맞춤 안경 상담 (매장 방문 예약)",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/5621850/pexels-photo-5621850.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "https://images.pexels.com/photos/5996611/pexels-photo-5996611.jpeg?w=600",
+        "https://images.pexels.com/photos/6749729/pexels-photo-6749729.jpeg"
+      ],
+      "hoursKo": "매일 10:00–20:00",
+      "hoursEn": "Daily 10:00–20:00",
+      "includedKo": [
+        "시력 검사",
+        "프레임 피팅 상담"
+      ],
+      "includedEn": [
+        "Vision check",
+        "Frame-fitting consultation"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "검사 결과에 따라 렌즈 제작 기간이 달라져요",
+        "기존 안경을 가져오면 상담이 빨라요"
+      ],
+      "notesEn": [
+        "Lens production time depends on the test result",
+        "Bringing your current glasses speeds up the consultation"
+      ]
+    },
+    {
+      "areaEn": "Garosu-gil, Gangnam-gu",
+      "areaKo": "가로수길 · 강남구",
+      "bookingCount": 0,
+      "category": "EYEWEAR",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.5179257,
+      "lng": 127.02336635,
+      "localRegular": false,
+      "nameEn": "Frame Fitting Experience — Store Visit",
+      "nameKo": "안경테 피팅 체험 (매장 방문 예약)",
+      "onsitePriceKrw": 25000,
+      "priceKrw": 15000,
+      "rating": 4.7,
+      "reviewCount": 156,
+      "reviewEn": "Tried on dozens of frames at the shop and got them fitted to my face. No glasses are sold online here — the visit is the whole point.",
+      "reviewKo": "매장에서 수십 개 안경테를 직접 써보고 얼굴에 맞게 피팅받았어요. 온라인으로 안경을 파는 곳이 아니라 방문이 핵심인 곳이에요.",
+      "slug": "eyewear-frame-fitting",
+      "subcategory": null,
+      "supplierNameEn": "Frame Fitting Experience — Store Visit",
+      "supplierNameKo": "안경테 피팅 체험 (매장 방문 예약)",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/5201933/pexels-photo-5201933.jpeg?auto=compress&cs=tinysrgb&w=1200&loading=lazy",
+        "https://images.pexels.com/photos/5202053/pexels-photo-5202053.jpeg?auto=compress&w=600",
+        "https://images.pexels.com/photos/5766564/pexels-photo-5766564.jpeg?auto=compress&cs=tinysrgb&w=600"
+      ],
+      "hoursKo": "매일 10:00–20:00",
+      "hoursEn": "Daily 10:00–20:00",
+      "includedKo": [
+        "시력 검사",
+        "프레임 피팅 상담"
+      ],
+      "includedEn": [
+        "Vision check",
+        "Frame-fitting consultation"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "검사 결과에 따라 렌즈 제작 기간이 달라져요",
+        "기존 안경을 가져오면 상담이 빨라요"
+      ],
+      "notesEn": [
+        "Lens production time depends on the test result",
+        "Bringing your current glasses speeds up the consultation"
+      ]
+    },
+    {
+      "areaEn": "Guro Digital Complex, Guro-gu",
+      "areaKo": "구로디지털단지 · 구로구",
+      "bookingCount": 0,
+      "category": "JOBS",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.48522662,
+      "lng": 126.90159422,
+      "localRegular": false,
+      "nameEn": "Professional Job-Seeker Consultation — Booking",
+      "nameKo": "전문인력 구직 상담 예약",
+      "onsitePriceKrw": 45000,
+      "priceKrw": 30000,
+      "rating": 4.8,
+      "reviewCount": 96,
+      "reviewEn": "A consultation booking only: the registered agency checked my E-7 eligibility and work history first, and explained exactly which roles I could be matched with. No placement was promised on the spot.",
+      "reviewKo": "상담 예약 전용이었어요: 등록된 소개사업자가 먼저 E-7 자격과 경력을 확인하고, 매칭 가능한 직무 범위를 정확히 설명해 줬습니다. 현장에서 취업을 보장하지는 않았어요.",
+      "slug": "jobs-pro-consult",
+      "subcategory": null,
+      "supplierNameEn": "Professional Job-Seeker Consultation — Booking",
+      "supplierNameKo": "전문인력 구직 상담 예약",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/5439463/pexels-photo-5439463.jpeg?w=600",
+        "https://images.pexels.com/photos/5439436/pexels-photo-5439436.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop",
+        "https://images.pexels.com/photos/5439141/pexels-photo-5439141.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+      ],
+      "hoursKo": "평일 10:00–18:00",
+      "hoursEn": "Weekdays 10:00–18:00",
+      "includedKo": [
+        "상담 1회 (60분)",
+        "맞춤 일자리 정보 안내"
+      ],
+      "includedEn": [
+        "One consultation (60 min)",
+        "Tailored job information"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 상담 장소로 오세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Come to the consultation at the booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "E-9 알선은 하지 않아요",
+        "취업 가능 체류자격자만 상담할 수 있어요"
+      ],
+      "notesEn": [
+        "No E-9 placement",
+        "Consultation is only for those eligible to work in Korea"
+      ]
+    },
+    {
+      "areaEn": "Daerim, Yeongdeungpo-gu",
+      "areaKo": "대림 · 영등포구",
+      "bookingCount": 0,
+      "category": "JOBS",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.4943706,
+      "lng": 126.89495181,
+      "localRegular": false,
+      "nameEn": "Work-Eligible Status Matching Consultation",
+      "nameKo": "취업 가능 체류자격 구직자 매칭 상담",
+      "onsitePriceKrw": 55000,
+      "priceKrw": 40000,
+      "rating": 4.9,
+      "reviewCount": 73,
+      "reviewEn": "With an F-5 status I could use the matching consultation. They confirmed my residence status allows employment first, then walked through openings step by step — Bapsang only booked the appointment.",
+      "reviewKo": "F-5 자격이라 매칭 상담을 이용할 수 있었어요. 먼저 취업 가능한 체류자격인지 확인한 뒤 공고를 단계별로 살펴봤고, Bapsang는 예약만 중개했습니다.",
+      "slug": "jobs-matching-consult",
+      "subcategory": null,
+      "supplierNameEn": "Work-Eligible Status Matching Consultation",
+      "supplierNameKo": "취업 가능 체류자격 구직자 매칭 상담",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/7643735/pexels-photo-7643735.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/5439137/pexels-photo-5439137.jpeg",
+        "https://images.pexels.com/photos/8112159/pexels-photo-8112159.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1"
+      ],
+      "hoursKo": "평일 10:00–18:00",
+      "hoursEn": "Weekdays 10:00–18:00",
+      "includedKo": [
+        "상담 1회 (60분)",
+        "맞춤 일자리 정보 안내"
+      ],
+      "includedEn": [
+        "One consultation (60 min)",
+        "Tailored job information"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 상담 장소로 오세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Come to the consultation at the booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "E-9 알선은 하지 않아요",
+        "취업 가능 체류자격자만 상담할 수 있어요"
+      ],
+      "notesEn": [
+        "No E-9 placement",
+        "Consultation is only for those eligible to work in Korea"
+      ]
+    },
+    {
+      "areaEn": "Sillim, Gwanak-gu",
+      "areaKo": "신림 · 관악구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.48522112,
+      "lng": 126.92970351,
+      "localRegular": false,
+      "nameEn": "Neighborhood Manhwa Cafe: 2-Hour Pass (1 Drink Included)",
+      "nameKo": "동네 만화카페 시간제 이용 (2시간 · 음료 1잔 포함)",
+      "onsitePriceKrw": 9000,
+      "priceKrw": 6000,
+      "rating": 4.7,
+      "reviewCount": 356,
+      "reviewEn": "Two hours in a cozy comic-book room with one drink included — the manhwa cafe exactly as neighborhood students use it, same time-based price.",
+      "reviewKo": "아늑한 만화방에서 음료 1잔 포함 2시간 — 동네 학생들이 쓰는 그대로의 만화카페, 같은 시간제 가격이었어요.",
+      "slug": "daily-manhwa-cafe",
+      "subcategory": null,
+      "supplierNameEn": "Neighborhood Manhwa Cafe: 2-Hour Pass (1 Drink Included)",
+      "supplierNameKo": "동네 만화카페 시간제 이용 (2시간 · 음료 1잔 포함)",
+      "unit": "PERSON",
+      "images": [
+        "https://images.pexels.com/photos/33388641/pexels-photo-33388641.jpeg?w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/8342200/pexels-photo-8342200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/5266499/pexels-photo-5266499.jpeg?auto=compress&cs=tinysrgb&w=600"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    },
+    {
+      "areaEn": "Ikseon-dong, Jongno-gu",
+      "areaKo": "익선동 · 종로구",
+      "bookingCount": 0,
+      "category": "DAILY",
+      "city": "SEOUL",
+      "isMeterTaxi": false,
+      "isSample": true,
+      "lat": 37.57293519,
+      "lng": 126.98959071,
+      "localRegular": false,
+      "nameEn": "Four-Cut Photo Booth Session (2 Prints)",
+      "nameKo": "인생네컷 포토부스 촬영 (4컷 촬영 + 인화 2장)",
+      "onsitePriceKrw": 7000,
+      "priceKrw": 5000,
+      "rating": 4.8,
+      "reviewCount": 612,
+      "reviewEn": "Four cuts, two prints, props on the wall — the photo booth ritual every Korean friend group does, at the same walk-in price.",
+      "reviewKo": "4컷 촬영에 인화 2장, 벽에 걸린 소품까지 — 한국 친구 그룹이 다 하는 포토부스 그대로, 같은 현장 가격이었어요.",
+      "slug": "daily-photo-booth",
+      "subcategory": null,
+      "supplierNameEn": "Four-Cut Photo Booth Session (2 Prints)",
+      "supplierNameKo": "인생네컷 포토부스 촬영 (4컷 촬영 + 인화 2장)",
+      "unit": "PERSON",
+      "images": [
+        "https://koreafrontrow.com/wp-content/uploads/2026/09/korean-four-cut-photo-strips-1024x576.jpg",
+        "https://www.bozarblog.info/wp-content/uploads/groupe-amis-photomaton-coreen-4-cut-accessoires-fr-scaled.webp",
+        "https://images.pexels.com/photos/19187695/pexels-photo-19187695.jpeg?auto=compress&cs=tinysrgb&w=750"
+      ],
+      "hoursKo": "매일 10:00–22:00",
+      "hoursEn": "Daily 10:00–22:00",
+      "includedKo": [
+        "입장 1회",
+        "시설 이용"
+      ],
+      "includedEn": [
+        "One entry",
+        "Facility use"
+      ],
+      "howToKo": [
+        "예약 시간에 맞춰 방문하세요",
+        "예약 코드를 보여주세요"
+      ],
+      "howToEn": [
+        "Visit at your booked time",
+        "Show your booking code"
+      ],
+      "notesKo": [
+        "성수기에는 대기할 수 있어요",
+        "개인 물품은 직접 보관하세요"
+      ],
+      "notesEn": [
+        "Peak times may involve a wait",
+        "Keep your belongings with you"
+      ]
+    }
+  ],
+  "stayAvailability": [
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-05",
+      "productSlug": "stay-hanok",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-06",
+      "productSlug": "stay-hanok",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-07",
+      "productSlug": "stay-hanok",
+      "remaining": 5,
+      "totalRooms": 5
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-08",
+      "productSlug": "stay-hanok",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-09",
+      "productSlug": "stay-hanok",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-10",
+      "productSlug": "stay-hanok",
+      "remaining": 5,
+      "totalRooms": 5
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-11",
+      "productSlug": "stay-hanok",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-12",
+      "productSlug": "stay-hanok",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-13",
+      "productSlug": "stay-hanok",
+      "remaining": 5,
+      "totalRooms": 5
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-14",
+      "productSlug": "stay-hanok",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-15",
+      "productSlug": "stay-hanok",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-16",
+      "productSlug": "stay-hanok",
+      "remaining": 5,
+      "totalRooms": 5
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-17",
+      "productSlug": "stay-hanok",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-18",
+      "productSlug": "stay-hanok",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-05",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-06",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 2,
+      "totalRooms": 2
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-07",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-08",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-09",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 2,
+      "totalRooms": 2
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-10",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-11",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-12",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 2,
+      "totalRooms": 2
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-13",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-14",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-15",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 2,
+      "totalRooms": 2
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-16",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 3,
+      "totalRooms": 3
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-17",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 4,
+      "totalRooms": 4
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-18",
+      "productSlug": "stay-jeju-stone",
+      "remaining": 2,
+      "totalRooms": 2
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-05",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 12,
+      "totalRooms": 12
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-06",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 13,
+      "totalRooms": 13
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-07",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 11,
+      "totalRooms": 11
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-08",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 12,
+      "totalRooms": 12
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-09",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 13,
+      "totalRooms": 13
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-10",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 11,
+      "totalRooms": 11
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-11",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 12,
+      "totalRooms": 12
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-12",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 13,
+      "totalRooms": 13
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-13",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 11,
+      "totalRooms": 11
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-14",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 12,
+      "totalRooms": 12
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-15",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 13,
+      "totalRooms": 13
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-16",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 11,
+      "totalRooms": 11
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-17",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 12,
+      "totalRooms": 12
+    },
+    {
+      "bookedRooms": 0,
+      "date": "2026-11-18",
+      "productSlug": "stay-busan-harbor",
+      "remaining": 13,
+      "totalRooms": 13
+    }
+  ],
+  "today": "2026-11-05"
+}

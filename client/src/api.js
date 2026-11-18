@@ -30,11 +30,9 @@ export const api = {
     req(`/api/bookings/${encodeURIComponent(code)}/pay`, { method: 'POST', body: JSON.stringify({ cardNumber }) }),
   cancelBooking: (code) => req(`/api/bookings/${encodeURIComponent(code)}/cancel`, { method: 'POST' }),
   myBookings: (email) => req(`/api/bookings?email=${encodeURIComponent(email)}`),
-  booking: (code) => req(`/api/bookings/${encodeURIComponent(code)}`),
   submitReview: (body) => req('/api/reviews', { method: 'POST', body: JSON.stringify(body) }),
+  productReviews: (slug) => req(`/api/products/${encodeURIComponent(slug)}/reviews`),
   points: (email) => req(`/api/points?email=${encodeURIComponent(email)}`),
-  mateMessages: (code) => req(`/api/mate/${encodeURIComponent(code)}`),
-  mateSend: (body) => req('/api/mate/messages', { method: 'POST', body: JSON.stringify(body) }),
   ownerChat: (code) => req(`/api/owner-chat/${encodeURIComponent(code)}`),
   ownerChatSend: (body) => req('/api/owner-chat/messages', { method: 'POST', body: JSON.stringify(body) }),
   partnerApply: (body) => req('/api/partners', { method: 'POST', body: JSON.stringify(body) }),
@@ -51,6 +49,4 @@ export const api = {
   chatbot: (message) => req('/api/chatbot', { method: 'POST', body: JSON.stringify({ message }) }),
   recommendations: (viewed, email) =>
     req(`/api/recommendations?viewed=${encodeURIComponent(viewed)}&email=${encodeURIComponent(email || '')}`),
-  translateProduct: (slug, target) =>
-    req(`/api/translate/product/${encodeURIComponent(slug)}?target=${encodeURIComponent(target)}`)
 };

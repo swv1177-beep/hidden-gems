@@ -18,7 +18,7 @@ hidden-gems/
     schema.js             # CREATE TABLE IF NOT EXISTS + seed (insert-if-empty)
     routes.js             # 모든 API 엔드포인트 (필요시 파일 분할 가능)
   client/
-    package.json          # react, react-dom, vite, @vitejs/plugin-react, leaflet
+    package.json          # react, react-dom, vite, @vitejs/plugin-react (지도: 카카오맵 JS SDK)
     vite.config.js        # build outDir: dist, dev proxy /api -> localhost:3000
     index.html
     src/                  # main.jsx, App.jsx, api.js, i18n.js, map.jsx, styles.css 등
@@ -127,8 +127,9 @@ hidden-gems/
   - 빈 메시지·1000자 초과 시 400 { error: 'invalid_message' }. 없는 예약 코드 시 404.
   - 손님 메시지(lang=손님 UI 언어)는 한국어로, 사장님 메시지(ko)는 손님 언어로 번역한다.
     손님 언어는 스레드의 최근 손님 메시지 sender_lang에서 가져오고, 없으면 en.
-  - 번역은 서버에서 DeepL로 수행한다(server/translate.js). DEEPL_API_KEY 미설정·번역
-    실패(한도 소진 456·인증 실패·타임아웃 5초) 시 translatedMessage=null로 저장하고
+  - 번역은 서버에서 Azure Translator로 수행한다(server/translate.js).
+    AZURE_TRANSLATOR_KEY 미설정·번역 실패(한도 소진·인증 실패·타임아웃 5초) 시
+    translatedMessage=null로 저장하고
     채팅은 원문으로 계속 동작한다. 동일 언어면 API를 호출하지 않고 원문을 그대로 저장한다.
   - 응답: { ok, message: { id, sender, message, senderLang, translatedMessage, translatedLang, createdAt }, translateEnabled }.
 - GET /api/owner-chat/:code → { messages, active, customerLang, translateEnabled }
@@ -208,7 +209,7 @@ hidden-gems/
   RIDE photo-1449824913935-59a10b8d2000 / EYEWEAR photo-1572635196237-14b3f281503f /
   KPOP photo-1470229722913-7c0e2dbbafd3 / KDRAMA photo-1493976040374-85c8e12f0c0e /
   JOBS photo-1521791136064-7986c2920216
-- 지도 탭(Leaflet + OpenStreetMap 타일, API 키 불필요):
+- 지도 탭(카카오맵 JS SDK, 카카오 로컬 API):
   - 상품 38개 전체에 동네 단위 핀(catalog lat/lng 사용). 화면에 '핀은 동네를 표시한다'를 명시한다.
   - 도시 칩(전체·서울·부산·제주), 카테고리 칩, 지도 검색 입력, 거리순 정렬(haversine).
   - 도시 기준점: 서울 37.57202217,126.97683236 / 부산 35.15779726,129.05989495 / 제주 33.4997202,126.5312573.

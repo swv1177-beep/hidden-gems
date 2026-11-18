@@ -88,3 +88,47 @@ export function productReview(p, lang) {
   if (lang === 'ko') return p.reviewKo || p.reviewEn || '';
   return p.reviewEn || p.reviewKo || '';
 }
+
+// Per-product photos (3 each, from catalog.json). Falls back to the shared
+// category photo when a product has no images yet.
+export function productImages(p) {
+  if (p && Array.isArray(p.images) && p.images.length) return p.images;
+  return [CATEGORY_IMAGES[p?.category] || CATEGORY_IMAGES.DAILY];
+}
+
+// Language-aware list fields (included/howTo/notes): Ko when lang is ko,
+// otherwise En with Ko fallback handled by the caller data shape.
+export function productList(p, base, lang) {
+  if (!p) return [];
+  const v = lang === 'ko' ? p[base + 'Ko'] : p[base + 'En'];
+  if (Array.isArray(v) && v.length) return v;
+  const en = p[base + 'En'];
+  return Array.isArray(en) ? en : [];
+}
+
+export function productText(p, base, lang) {
+  if (!p) return '';
+  if (lang === 'ko') return p[base + 'Ko'] || p[base + 'En'] || '';
+  return p[base + 'En'] || p[base + 'Ko'] || '';
+}
+
+// Wishlist + viewed categories persist in localStorage (browser only).
+// Language/currency are intentionally NOT persisted (unchanged behaviour).
+export function loadWishlist() {
+  try {
+    const v = JSON.parse(localStorage.getItem('bapsang-wishlist') || '[]');
+    return Array.isArray(v) ? v : [];
+  } catch { return []; }
+}
+export function saveWishlist(list) {
+  try { localStorage.setItem('bapsang-wishlist', JSON.stringify(list)); } catch {}
+}
+export function loadViewedCategories() {
+  try {
+    const v = JSON.parse(localStorage.getItem('bapsang-viewed-cats') || '[]');
+    return Array.isArray(v) ? v : [];
+  } catch { return []; }
+}
+export function saveViewedCategories(list) {
+  try { localStorage.setItem('bapsang-viewed-cats', JSON.stringify(list)); } catch {}
+}

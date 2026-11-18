@@ -4,11 +4,21 @@
 const express = require('express');
 const { pool } = require('./db');
 const { ensureStayRow, fmtDate, todayStr, addDays } = require('./schema');
-const { translateEnabled, translateTextViaDeepL } = require('./translate');
+const { translateEnabled, translateText: translateChatText } = require('./translate');
 
 const router = express.Router();
 
 // ---------- 공통 헬퍼 ----------
+
+function parseJsonArray(v, fallback) {
+  if (!v) return fallback;
+  try {
+    const a = JSON.parse(v);
+    return Array.isArray(a) ? a : fallback;
+  } catch {
+    return fallback;
+  }
+}
 
 function productOut(row, bookingCount) {
   return {
@@ -34,6 +44,15 @@ function productOut(row, bookingCount) {
     isMeterTaxi: row.is_meter_taxi,
     supplierNameKo: row.supplier_ko,
     supplierNameEn: row.supplier_en,
+    images: parseJsonArray(row.images, []),
+    hoursKo: row.hours_ko || null,
+    hoursEn: row.hours_en || null,
+    includedKo: parseJsonArray(row.included_ko, []),
+    includedEn: parseJsonArray(row.included_en, []),
+    howToKo: parseJsonArray(row.howto_ko, []),
+    howToEn: parseJsonArray(row.howto_en, []),
+    notesKo: parseJsonArray(row.notes_ko, []),
+    notesEn: parseJsonArray(row.notes_en, []),
     bookingCount: bookingCount != null ? bookingCount : 0,
   };
 }
@@ -68,6 +87,7 @@ function bookingOut(row, product) {
     name: row.name,
     quantity: row.quantity,
     nights: row.nights,
+    timeSlot: row.time_slot || null,
     date: row.stay_date ? fmtDate(row.stay_date) : null,
     totalKrw: row.total_krw,
     status: row.status,
@@ -282,7 +302,7 @@ router.get('/nearby', async (req, res) => {
 
 router.post('/bookings', async (req, res) => {
   try {
-    const { productSlug, quantity, date, nights, email, name } = req.body || {};
+    const { productSlug, quantity, date, nights, email, name, timeSlot } = req.body || {};
     const p = await getProduct(productSlug);
     if (!p) return res.status(404).json({ error: 'product_not_found' });
     const qty = quantity != null ? Number(quantity) : (p.unit === 'SONG' ? 10 : 1);
@@ -298,7 +318,7 @@ router.post('/bookings', async (req, res) => {
     const booking = {
       product_slug: p.slug, email: email || null, name: name || null,
       quantity: qty, nights: n, stay_date: p.unit === 'NIGHT' ? date : null,
-      total_krw: totalKrw,
+      total_krw: totalKrw, time_slot: timeSlot || null,
     };
     if (p.unit === 'NIGHT') {
       const ok = await checkStayAvailability(booking);
@@ -312,10 +332,10 @@ router.post('/bookings', async (req, res) => {
       try {
         const { rows } = await pool.query(
           `INSERT INTO bookings (code, product_slug, email, name, quantity, nights, stay_date,
-             total_krw, status, payment_status, visit_code)
-           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'requested','unpaid',$9) RETURNING *`,
+             total_krw, status, payment_status, visit_code, time_slot)
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'requested','unpaid',$9,$10) RETURNING *`,
           [code, booking.product_slug, booking.email, booking.name, booking.quantity,
-           booking.nights, booking.stay_date, booking.total_krw, visitCode]
+           booking.nights, booking.stay_date, booking.total_krw, visitCode, booking.time_slot]
         );
         return res.status(201).json({ booking: bookingOut(rows[0], productOut(p, 0)), testMode: true });
       } catch (e) {
@@ -452,6 +472,21 @@ async function creditReviewPoints(booking) {
   return base + bonus;
 }
 
+// Reviews for one product, via the booking that each review belongs to.
+router.get('/products/:slug/reviews', async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT r.id, r.rating, r.text, r.created_at AS "createdAt"
+       FROM reviews r JOIN bookings b ON b.code = r.booking_code
+       WHERE b.product_slug = $1 ORDER BY r.created_at DESC LIMIT 20`,
+      [req.params.slug]
+    );
+    res.json({ reviews: rows });
+  } catch (e) {
+    res.status(500).json({ error: 'server_error' });
+  }
+});
+
 router.post('/reviews', async (req, res) => {
   try {
     const { bookingCode, visitCode, rating, text } = req.body || {};
@@ -574,7 +609,7 @@ router.get('/mate/:code', async (req, res) => {
 
 // ---------- 사업자↔외국인 AI 번역 채팅 (예약별 스레드) ----------
 // 손님 측(내 예약)과 사장님 측(관리자 콘솔)이 같은 예약 코드로 대화한다.
-// 번역은 서버에서 DeepL로 수행한다. DEEPL_API_KEY 미설정 시 번역 없이 원문만
+// 번역은 서버에서 Azure Translator로 수행한다. AZURE_TRANSLATOR_KEY 미설정 시 번역 없이 원문만
 // 저장·표시되고 채팅 자체는 계속 동작한다. 빠른 답장은 클라이언트 사전 번역이라
 // 키 없이도 번역되어 보인다. 번역 실패(한도 소진·인증 실패·타임아웃)도 원문 폴백.
 
@@ -621,7 +656,7 @@ router.post('/owner-chat/messages', async (req, res) => {
   if (senderLang === targetLang) {
     translated = text;
   } else {
-    translated = await translateTextViaDeepL(text, targetLang);
+    translated = await translateChatText(text, targetLang);
   }
   const { rows } = await pool.query(
     `INSERT INTO owner_messages (booking_code, sender, message, sender_lang, translated_message, translated_lang)

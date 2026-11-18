@@ -50,8 +50,19 @@ async function initDb() {
     subcategory TEXT, unit TEXT, rating NUMERIC, review_count INT,
     review_ko TEXT, review_en TEXT, lat NUMERIC, lng NUMERIC,
     local_regular BOOLEAN, is_sample BOOLEAN, is_meter_taxi BOOLEAN,
-    supplier_ko TEXT, supplier_en TEXT
+    supplier_ko TEXT, supplier_en TEXT,
+    images TEXT, hours_ko TEXT, hours_en TEXT,
+    included_ko TEXT, included_en TEXT, howto_ko TEXT, howto_en TEXT,
+    notes_ko TEXT, notes_en TEXT
   )`);
+  // Existing DBs (already seeded) lack the 2026-11-19 columns — add them.
+  for (const col of [
+    'images TEXT', 'hours_ko TEXT', 'hours_en TEXT',
+    'included_ko TEXT', 'included_en TEXT', 'howto_ko TEXT', 'howto_en TEXT',
+    'notes_ko TEXT', 'notes_en TEXT',
+  ]) {
+    await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS ${col}`);
+  }
   await pool.query(`CREATE TABLE IF NOT EXISTS stay_inventory (
     product_slug TEXT, stay_date DATE, total_rooms INT, booked_rooms INT,
     PRIMARY KEY (product_slug, stay_date)
@@ -60,8 +71,10 @@ async function initDb() {
     id SERIAL PRIMARY KEY, code TEXT UNIQUE, product_slug TEXT, email TEXT,
     name TEXT, quantity INT, nights INT DEFAULT 1, stay_date DATE,
     total_krw INT, status TEXT, payment_status TEXT, visit_code TEXT,
-    confirmed_at TIMESTAMPTZ, created_at TIMESTAMPTZ DEFAULT now()
+    confirmed_at TIMESTAMPTZ, created_at TIMESTAMPTZ DEFAULT now(),
+    time_slot TEXT
   )`);
+  await pool.query(`ALTER TABLE bookings ADD COLUMN IF NOT EXISTS time_slot TEXT`);
   await pool.query(`CREATE TABLE IF NOT EXISTS payments (
     id SERIAL PRIMARY KEY, booking_code TEXT, amount_krw INT, last4 TEXT,
     status TEXT, test_mode BOOLEAN DEFAULT true, created_at TIMESTAMPTZ DEFAULT now()
@@ -105,6 +118,27 @@ async function initDb() {
        p.city, p.category, p.subcategory || null, p.unit, p.rating, p.reviewCount,
        p.reviewKo, p.reviewEn, p.lat, p.lng, p.localRegular, p.isSample, p.isMeterTaxi,
        p.supplierNameKo, p.supplierNameEn]
+    );
+  }
+
+  // Backfill the 2026-11-19 fields for already-seeded rows: the insert
+  // above is insert-if-empty, so existing products would never get images
+  // or detail text without this UPDATE (idempotent, new columns only).
+  for (const p of catalog.products) {
+    const c = {
+      images: p.images || [], hoursKo: p.hoursKo || null, hoursEn: p.hoursEn || null,
+      includedKo: p.includedKo || [], includedEn: p.includedEn || [],
+      howToKo: p.howToKo || [], howToEn: p.howToEn || [],
+      notesKo: p.notesKo || [], notesEn: p.notesEn || [],
+    };
+    await pool.query(
+      `UPDATE products SET images=$2, hours_ko=$3, hours_en=$4,
+        included_ko=$5, included_en=$6, howto_ko=$7, howto_en=$8,
+        notes_ko=$9, notes_en=$10 WHERE slug=$1`,
+      [p.slug, JSON.stringify(c.images), c.hoursKo, c.hoursEn,
+       JSON.stringify(c.includedKo), JSON.stringify(c.includedEn),
+       JSON.stringify(c.howToKo), JSON.stringify(c.howToEn),
+       JSON.stringify(c.notesKo), JSON.stringify(c.notesEn)]
     );
   }
 
