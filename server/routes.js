@@ -880,11 +880,11 @@ function chatbotReply(message) {
   if (isUrgent(t)) {
     return { reply: '긴급 요청을 접수했습니다. 1분 이내 응답 목표로 상담원이 연락드립니다. (테스트 모드)', urgent: true, intent: 'urgent' };
   }
-  if (/조회|내 예약|확인/.test(t)) return { reply: '예약 조회는 내 예약 화면에서 이메일로 조회할 수 있습니다. 예약 코드(KF-xxxxxx)를 알려주시면 확인해 드릴게요.', urgent: false, intent: 'booking_lookup' };
-  if (/변경/.test(t)) return { reply: '예약 변경은 기존 예약을 취소한 뒤 새로 예약해 주세요. 테스트 모드에서는 변경 수수료가 없습니다.', urgent: false, intent: 'booking_change' };
-  if (/취소|환불/.test(t)) return { reply: '예약 취소는 내 예약 화면에서 가능합니다. 결제된 테스트 예약은 취소 시 자동 환불 처리됩니다(실제 청구 없음).', urgent: false, intent: 'booking_cancel' };
-  if (/결제|카드/.test(t)) return { reply: '결제는 테스트 모드로 진행되며 실제 청구가 없습니다. 카드번호는 마지막 4자리만 저장됩니다.', urgent: false, intent: 'payment' };
-  if (/이용|어떻게|방법|입장|사용/.test(t)) return { reply: '이용 당일 예약 코드와 방문 코드를 현장에서 제시해 주세요. 상품별 이용 안내는 상품 상세 페이지를 확인해 주세요.', urgent: false, intent: 'usage' };
+  if (/조회|내 예약|확인|booking|reservation|status/.test(t)) return { reply: '예약 조회는 내 예약 화면에서 이메일로 조회할 수 있습니다. 예약 코드(KF-xxxxxx)를 알려주시면 확인해 드릴게요.', urgent: false, intent: 'booking_lookup' };
+  if (/변경|change/.test(t)) return { reply: '예약 변경은 기존 예약을 취소한 뒤 새로 예약해 주세요. 테스트 모드에서는 변경 수수료가 없습니다.', urgent: false, intent: 'booking_change' };
+  if (/취소|환불|cancel|refund/.test(t)) return { reply: '예약 취소는 내 예약 화면에서 가능합니다. 결제된 테스트 예약은 취소 시 자동 환불 처리됩니다(실제 청구 없음).', urgent: false, intent: 'booking_cancel' };
+  if (/결제|카드|payment|pay|card/.test(t)) return { reply: '결제는 테스트 모드로 진행되며 실제 청구가 없습니다. 카드번호는 마지막 4자리만 저장됩니다.', urgent: false, intent: 'payment' };
+  if (/이용|어떻게|방법|입장|사용|how|use|usage/.test(t)) return { reply: '이용 당일 예약 코드와 방문 코드를 현장에서 제시해 주세요. 상품별 이용 안내는 상품 상세 페이지를 확인해 주세요.', urgent: false, intent: 'usage' };
   return { reply: '무엇을 도와드릴까요? 예약 조회·변경·취소·결제·이용 방법에 대해 물어보실 수 있습니다. (테스트 모드)', urgent: false, intent: 'other' };
 }
 
