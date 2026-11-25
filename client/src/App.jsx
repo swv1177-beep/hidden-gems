@@ -171,7 +171,6 @@ export default function App() {
             <button className={currency === 'USD' ? 'cur active' : 'cur'} onClick={() => setCurrency('USD')}>USD</button>
           </div>
         </div>
-        <button className="btn chat-toggle" onClick={() => setChatOpen((v) => !v)}>💬 {t('chatBtn')}</button>
       </header>
 
       {chatOpen && (
@@ -279,6 +278,8 @@ export default function App() {
           <span className="tabbar-icon">○</span><span>{t('tabMy')}</span>
         </button>
       </nav>
+
+      <button className="chat-fab" onClick={() => setChatOpen((v) => !v)} aria-label={t('chatBtn')}>💬</button>
     </div>
   );
 }

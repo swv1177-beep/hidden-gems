@@ -1,17 +1,17 @@
 /* Bapsang design tokens + components. Brand colors stay Bapsang's own:
-   main #ff5a7a, background #faf7f2, text #1c1c1e. */
+   main #ff5a7a, background #faf5ec (warm cream), text #1c1c1e. */
 :root {
   --brand: #ff5a7a;
   --brand-dark: #e63e60;
   --brand-soft: #ffe4ea;
   --brand-border: #ffd3dc;
-  --bg: #faf7f2;
-  --surface: #fff;
+  --bg: #faf5ec;
+  --surface: #fffdfa;
   --text: #1c1c1e;
-  --muted: #777;
-  --muted-2: #999;
-  --border: #eee;
-  --border-strong: #ddd;
+  --muted: #857a6e;
+  --muted-2: #a89a8a;
+  --border: #f0e8dd;
+  --border-strong: #e3d9c8;
   --success: #2e7d32;
   --success-bg: #e8f5e9;
   --success-border: #a5d6a7;
@@ -23,12 +23,12 @@
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
-  --space-6: 24px;
+  --space-6: 28px;
   --radius-s: 8px;
-  --radius-m: 12px;
-  --radius-l: 16px;
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-float: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --radius-m: 14px;
+  --radius-l: 20px;
+  --shadow-card: 0 2px 10px rgba(60, 45, 30, 0.07);
+  --shadow-float: 0 8px 28px rgba(60, 45, 30, 0.12);
   --font-s: 12px;
   --font-m: 14px;
   --font-l: 16px;
@@ -40,7 +40,7 @@
 body { margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif; color: var(--text); background: var(--bg); }
 .app { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
 .header { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 0; border-bottom: 2px solid var(--brand); }
-.logo { font-size: var(--font-xxl); font-weight: 900; color: var(--brand); background: none; border: none; cursor: pointer; letter-spacing: -1px; }
+.logo { font-size: var(--font-xxl); font-weight: 800; color: var(--brand); background: none; border: none; cursor: pointer; letter-spacing: -1px; }
 .tagline { color: #666; font-size: 13px; }
 .nav { display: flex; flex-wrap: wrap; gap: 6px; }
 .nav button { background: none; border: none; cursor: pointer; font-size: var(--font-m); padding: 6px 8px; }
@@ -57,7 +57,10 @@ body { margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR'
 .input, select.input, textarea.input { width: 100%; padding: 10px; border: 1px solid var(--border-strong); border-radius: var(--radius-s); font-size: var(--font-m); background: var(--surface); }
 label { display: block; font-size: var(--font-m); margin: 10px 0; }
 label .input, label select { margin-top: 4px; }
-.chat-panel { background: var(--surface); border: 1px solid var(--brand-border); border-radius: var(--radius-m); padding: 14px; margin-top: 12px; }
+/* AI chat lives in a floating button now, not the top menu. The panel is a
+   fixed sheet above the button so it opens wherever the user is scrolled. */
+.chat-panel { position: fixed; right: 16px; bottom: 96px; z-index: 40; width: min(380px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--brand-border); border-radius: var(--radius-m); padding: 14px; box-shadow: var(--shadow-float); }
+.chat-fab { position: fixed; right: 16px; bottom: 24px; z-index: 41; width: 56px; height: 56px; border-radius: 50%; border: none; background: var(--brand); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; box-shadow: var(--shadow-float); display: flex; align-items: center; justify-content: center; }
 .chat-log { max-height: 220px; overflow-y: auto; }
 .msg { padding: 8px 12px; border-radius: 12px; margin: 6px 0; max-width: 85%; }
 .msg.user { background: var(--brand-soft); margin-left: auto; text-align: right; }
@@ -88,12 +91,12 @@ label .input, label select { margin-top: 4px; }
 .banner.points { background: linear-gradient(135deg, #6a5acd, #4db6ac); }
 .cat-row { background: var(--surface); border-radius: var(--radius-m); margin: 10px 0; overflow: hidden; box-shadow: var(--shadow-card); }
 .cat-row-head { width: 100%; display: flex; justify-content: space-between; background: none; border: none; padding: 14px 16px; cursor: pointer; font-size: 15px; }
-.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 0 12px 12px; }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 14px 14px; }
 .product-card { position: relative; background: var(--surface); border-radius: var(--radius-m); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-card); }
 .product-img { width: 100%; height: 160px; object-fit: cover; display: block; }
-.product-body { padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+.product-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
 .muted { color: var(--muted); font-size: 13px; }
-.price { font-weight: 800; color: var(--brand); }
+.price { font-weight: 700; color: var(--brand); }
 .price.big { font-size: 22px; }
 .price-old { text-decoration: line-through; color: var(--muted-2); font-weight: 400; font-size: 13px; }
 .price-row { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
@@ -103,6 +106,12 @@ label .input, label select { margin-top: 4px; }
 .badge.local { background: #fff0f3; color: #d6336c; }
 .row-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
 .detail-img { width: 100%; max-height: 360px; object-fit: cover; border-radius: var(--radius-m); display: block; }
+
+/* ---------- Photo tone: warm natural light ---------- */
+.product-img, .cat-img, .promo-img, .gallery-main, .gallery-thumb,
+.hero-img, .hcard-img, .cat-icon-img, .detail-img {
+  filter: saturate(1.06) contrast(0.97) brightness(1.03) sepia(0.07);
+}
 .seller-line { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-s); padding: 10px 12px; }
 .notice { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: var(--radius-s); padding: 10px 12px; }
 .warn { background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: var(--radius-s); padding: 10px 12px; }
@@ -126,7 +135,7 @@ label .input, label select { margin-top: 4px; }
 .map-row, .booking-row { display: flex; justify-content: space-between; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin: 8px 0; flex-wrap: wrap; }
 .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 12px 0; }
 .stat { background: var(--surface); border-radius: var(--radius-m); padding: 12px; border: 1px solid var(--border); }
-.img-fallback { background: linear-gradient(135deg, #ff5a7a, #ffb347, #6a5acd); min-height: 120px; }
+.img-fallback { background: linear-gradient(135deg, #ff5a7a, #ffb347, #ff8a5c); min-height: 120px; }
 .img-fallback.hero-img { height: 320px; }
 .img-fallback.product-img { height: 160px; }
 .img-fallback.cat-img { height: 110px; }
@@ -184,9 +193,9 @@ label .input, label select { margin-top: 4px; }
 .gallery-more { position: relative; }
 .gallery-thumb-btn { padding: 0; border: 0; background: none; display: block; height: 100%; width: 100%; cursor: pointer; }
 .gallery-more span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); color: #fff; font-weight: 800; border-radius: var(--radius-m); }
-.detail-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m); padding: 16px; margin: 14px 0; box-shadow: var(--shadow-card); }
+.detail-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m); padding: 20px; margin: 18px 0; box-shadow: var(--shadow-card); }
 .detail-section h3 { margin: 0 0 10px; }
-.detail-price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m); padding: 16px; margin: 14px 0; box-shadow: var(--shadow-card); }
+.detail-price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m); padding: 20px; margin: 18px 0; box-shadow: var(--shadow-card); }
 .info-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
 .review-item { border-top: 1px solid var(--border); padding: 12px 0; }
 .review-item:first-of-type { border-top: none; }
@@ -230,6 +239,8 @@ label .input, label select { margin-top: 4px; }
   .tabbar-btn.active { color: var(--brand); font-weight: 700; }
   .tabbar-icon { font-size: 20px; line-height: 1; }
   .sticky-cta { bottom: calc(56px + env(safe-area-inset-bottom, 0px)); margin: 16px -16px calc(-72px - env(safe-area-inset-bottom, 0px)); }
+  .chat-fab { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .chat-panel { bottom: calc(144px + env(safe-area-inset-bottom, 0px)); }
   .gallery { grid-template-columns: 1fr; grid-template-rows: 240px; }
   .gallery-main { grid-row: auto; }
   .gallery-thumbs-row { display: flex; gap: 8px; overflow-x: auto; margin-top: 8px; }
